@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WoodGood</title>
+<meta name="description" content="WoodGood – domy modułowe z drewna klejonego krzyżowo (CLT). Marka produktowa Metafora Architekci. Strona w przygotowaniu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--ink:#2F2E2C;--paper:#EEF0EC;--wood:#C9B79A;--g:#403F3D;--body:"Jost",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gut:max(20px,4vw)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.mono{font:500 11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+/* pasek */
+.bar{position:fixed;z-index:10;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:22px var(--gut);color:#fff;mix-blend-mode:difference}
+.bar a{text-decoration:none}.bar a:hover{opacity:.7}
+/* hero: film z budowy + logo w centrum */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#161615 url(wg/hero.jpg) center/cover;color:#fff}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.hero video.on{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%,rgba(20,20,18,.35),rgba(20,20,18,.72))}
+.hc{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut)}
+.hc img{width:min(440px,62vw);height:auto;filter:drop-shadow(0 10px 40px rgba(0,0,0,.35))}
+.hc .mono{margin-top:34px;color:rgba(255,255,255,.85)}
+.hc .soon{margin-top:12px;font-size:15px;color:rgba(255,255,255,.7)}
+.hcap{position:absolute;z-index:2;left:var(--gut);bottom:24px;color:rgba(255,255,255,.75)}
+.hdots{position:absolute;z-index:2;right:var(--gut);bottom:24px;display:flex;gap:8px}
+.hdots i{width:22px;height:2px;background:rgba(255,255,255,.35)}.hdots i.on{background:#fff}
+/* wnętrze */
+.int{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;align-items:end;padding:110px var(--gut) 0}
+.int h2,.build h2,.end h2{font:400 clamp(34px,4.6vw,66px)/1.04 var(--body);margin:14px 0 0;letter-spacing:-.005em}
+.int p{max-width:42ch;margin:22px 0 0;color:#5B5A57}
+.int figure{margin:0;aspect-ratio:16/10;overflow:hidden}
+.int figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.8,.2,1)}
+.int figure.in img{transform:none}
+.int figcaption{font-size:13px;color:#77756F;padding-top:10px}
+/* z placu budowy */
+.build{padding:120px var(--gut) 0}
+.build .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.build .head p{max-width:46ch;color:#5B5A57;margin:0}
+.clips{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px}
+.clip{position:relative;margin:0;overflow:hidden;background:#d9dad5}
+.clip video{width:100%;height:100%;object-fit:cover;display:block}
+.clip figcaption{position:absolute;left:12px;bottom:10px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.c1{grid-column:span 7;aspect-ratio:16/9}.c2{grid-column:span 5;aspect-ratio:16/13}
+.c3{grid-column:span 4;aspect-ratio:3/4}.c4{grid-column:span 4;aspect-ratio:3/4}.c5{grid-column:span 4;aspect-ratio:3/4}
+.c6{grid-column:span 12;aspect-ratio:21/8}
+@media (max-width:800px){.int{grid-template-columns:1fr}.clips>*{grid-column:span 12!important;aspect-ratio:16/10!important}}
+/* koniec */
+.end{padding:130px var(--gut) 90px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;border-bottom:1px solid #D3D5CF}
+.end p{color:#5B5A57;margin:0 0 6px}
+.btn{display:inline-block;margin-top:22px;padding:0 26px 10px 0;border-bottom:1px solid currentColor;text-decoration:none;font-weight:500}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px var(--gut) 34px;color:#77756F;font-size:13px}
+@media (max-width:800px){.end{grid-template-columns:1fr}}
+/* wejścia z lewej */
+.rv{opacity:0;transform:translateX(-40px);transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero video{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="mono" href="index.html#woodgood">← Metafora Architekci</a>
+  <span class="mono">WoodGood · 2030</span>
+</header>
+
+<section class="hero" aria-label="WoodGood – film z budowy domu z CLT">
+  <video muted playsinline preload="auto" poster="wg/hero.jpg"></video>
+  <video muted playsinline preload="auto"></video>
+  <div class="hc">
+    <img src="wg/logo-woodgood-white.png" width="1000" height="694" alt="WoodGood">
+    <span class="mono">Domy modułowe z drewna CLT · kierunek rozwoju do 2030</span>
+    <span class="soon">Strona w przygotowaniu</span>
+  </div>
+  <span class="hcap mono" id="hcap">Z placu budowy</span>
+  <div class="hdots" id="hdots" aria-hidden="true"></div>
+</section>
+
+<section class="int">
+  <div class="rv">
+    <span class="mono">Wnętrze</span>
+    <h2>Drewno, które widać i&nbsp;czuć</h2>
+    <p>Ściany i stropy z drewna klejonego krzyżowo zostają odsłonięte. Dają ciepło, zdrowy mikroklimat i spokojne, jasne wnętrze.</p>
+  </div>
+  <figure class="rv" id="intf"><img src="p/dom-clt-probono-czerna/06.jpg" alt="Wizualizacja wnętrza domu z CLT – kuchnia i jadalnia"><figcaption>Wnętrze domu z CLT · wizualizacja Metafora Architekci</figcaption></figure>
+</section>
+
+<section class="build">
+  <div class="head rv">
+    <div><span class="mono">Z placu budowy</span><h2>Dom z CLT rośnie w&nbsp;kilka dni</h2></div>
+    <p>Prefabrykowane ściany i stropy przyjeżdżają gotowe, dźwig ustawia je na płycie fundamentowej. Fragmenty filmów z budowy naszej realizacji.</p>
+  </div>
+  <div class="clips">
+    <figure class="clip c1 rv"><video data-src="wg/wg_01_dzwig.mp4" poster="wg/wg_01_dzwig.jpg" muted loop playsinline></video><figcaption class="mono">Montaż ścian dźwigiem</figcaption></figure>
+    <figure class="clip c2 rv"><video data-src="wg/wg_02_montaz_z_gory.mp4" poster="wg/wg_02_montaz_z_gory.jpg" muted loop playsinline></video><figcaption class="mono">Montaż z lotu ptaka</figcaption></figure>
+    <figure class="clip c3 rv"><video data-src="wg/wg_03_sciany_clt.mp4" poster="wg/wg_03_sciany_clt.jpg" muted loop playsinline></video><figcaption class="mono">Ściany z CLT</figcaption></figure>
+    <figure class="clip c4 rv"><video data-src="wg/wg_04_wnetrze_clt.mp4" poster="wg/wg_04_wnetrze_clt.jpg" muted loop playsinline></video><figcaption class="mono">Wnętrze w stanie surowym</figcaption></figure>
+    <figure class="clip c5 rv"><video data-src="wg/wg_05_bryla.mp4" poster="wg/wg_05_bryla.jpg" muted loop playsinline></video><figcaption class="mono">Układ pomieszczeń</figcaption></figure>
+    <figure class="clip c6 rv"><video data-src="wg/wg_06_elewacja.mp4" poster="wg/wg_06_elewacja.jpg" muted loop playsinline></video><figcaption class="mono">Elewacja z drewna</figcaption></figure>
+  </div>
+</section>
+
+<section class="end">
+  <div class="rv"><span class="mono">WoodGood · Metafora Architekci</span><h2>Nasza nowa marka produktowa</h2></div>
+  <div class="rv"><p>Pełna strona WoodGood jest w przygotowaniu. Jeśli chcecie porozmawiać o domu z CLT już teraz, napiszcie do nas.</p>
+    <a class="btn" href="index.html#kontakt">Porozmawiajmy</a></div>
+</section>
+<footer class="foot"><span>© 2026 WoodGood · marka Metafora Architekci sp. z o.o.</span><span class="mono">Design · Sharing · Love</span></footer>
+
+<script>
+/* film w tle: fragmenty z budowy płynnie przenikają się w pętli */
+(function(){
+  const S=[["wg/wg_01_dzwig.mp4","Montaż ścian dźwigiem"],["wg/wg_02_montaz_z_gory.mp4","Montaż z lotu ptaka"],["wg/wg_06_elewacja.mp4","Elewacja z drewna"],["wg/wg_04_wnetrze_clt.mp4","Wnętrze w stanie surowym"]];
+  const V=[...document.querySelectorAll(".hero video")],cap=document.getElementById("hcap"),dots=document.getElementById("hdots");
+  dots.innerHTML=S.map(()=>"<i></i>").join("");const D=[...dots.children];
+  let i=0,a=0;
+  function show(k){const v=V[a],w=V[1-a];v.src=S[k][0];v.currentTime=0;
+    v.onloadeddata=()=>{v.play().catch(()=>{});v.classList.add("on");w.classList.remove("on");setTimeout(()=>{w.pause()},1500)};
+    cap.textContent=S[k][1];D.forEach((d,j)=>d.classList.toggle("on",j===k));
+    v.onended=null;v.ontimeupdate=()=>{if(v.duration&&v.currentTime>v.duration-1.3){v.ontimeupdate=null;a=1-a;i=(i+1)%S.length;show(i)}};}
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){V[0].src=S[0][0];V[0].classList.add("on");return}
+  show(0);
+})();
+/* wejścia z lewej przy każdym pojawieniu się na ekranie + odtwarzanie filmów tylko gdy są widoczne */
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("in",e.isIntersecting);
+    const v=e.target.querySelector&&e.target.querySelector("video[data-src]");
+    if(v){if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()}}),{threshold:.18});
+  document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
