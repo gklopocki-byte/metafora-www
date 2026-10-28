@@ -516,6 +516,73 @@ main .wrap.wwide{margin-top:110px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .place{cursor:pointer}
 @media (max-width:900px){.ww-panel{position:relative;width:auto}.ww-open #globe{display:none}.wf2{grid-template-columns:1fr}}
+
+/* PODSTRONA – galeria: do 12 dużych zdjęć w rzędach po 3, dalej małe czarno-białe kafle po 9 w rzędzie;
+   najechany mały kafel nabiera koloru i rośnie do wielkości dużego, sąsiednie ustępują mu miejsca */
+.pv-gal{columns:auto}
+.pg-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:8px}
+.pg-row .pg-it,.pg-fill{flex:1 1 0;min-width:0;margin:0}
+.pg-row.lg+.pg-row.sm{margin-top:40px}
+.pg-row.sm{gap:6px;margin-bottom:6px}
+.pg-row.sm .pg-it,.pg-row.sm .pg-fill{transition:flex-grow .75s cubic-bezier(.2,.8,.2,1)}
+.pg-row.sm img{filter:grayscale(1) contrast(1.04);transition:filter .6s ease}
+.pg-row.sm .pg-it.on img{filter:none}
+.pg-row.sm .pg-it:hover img{transform:none}
+@media (hover:none){.pg-row.sm img{filter:none}}
+
+/* LIGHTBOX: zdjęcia na taśmie – przewijanie klikiem w lewą/prawą połowę, przeciągnięciem albo strzałkami klawiatury;
+   cienkie strzałki podpowiadają kierunek */
+.lb-stage{position:relative;width:100%;height:min(78vh,calc(100vh - 150px));overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.lb-stage.drag{cursor:grabbing}
+.lb-track{display:flex;gap:48px;height:100%;will-change:transform}
+.lb-track.anim{transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.lb .lb-s{flex:0 0 100%;width:100%;height:100%;max-height:none;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+.lb-ar{position:absolute;top:50%;width:56px;height:18px;margin-top:-9px;opacity:0;pointer-events:none;filter:drop-shadow(0 0 4px rgba(0,0,0,.55));transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.lb-ar.l{left:18px}.lb-ar.r{right:18px}
+.lb-ar svg{display:block;width:100%;height:100%;fill:none;stroke:#F2F3F1;stroke-width:1.2}
+.lb-stage:hover .lb-ar{opacity:.35}
+.lb-stage.sl .lb-ar.l,.lb-stage.sr .lb-ar.r{opacity:1}
+.lb-stage.sl .lb-ar.l{transform:translateX(-8px)}.lb-stage.sr .lb-ar.r{transform:translateX(8px)}
+.lb-stage.hint .lb-ar{animation:lbhint 1.4s ease-in-out 2}
+@keyframes lbhint{0%,100%{opacity:0}50%{opacity:.9}}
+@media (hover:none){.lb-ar{opacity:.5}}
+.lb.one .lb-ar{display:none}.lb.one .lb-stage{cursor:default}
+#works-t{cursor:pointer;transition:color .3s}#works-t:hover{color:var(--hov)}
+/* METAFORA: zdjęcia w tej samej siatce co tekst nad nimi (lewe pod „relacjami”, prawe pod opisem) */
+.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
+.duo figure:first-child{aspect-ratio:3/4;background:#fff}
+.duo figure:last-child{aspect-ratio:3/4}
+.duo figure.rel img{object-position:50% 100%}
+.duo figure.full,.duo figure.full:last-child{aspect-ratio:1200/1689}
+.duo figure.full img{height:100%;margin-top:0}
+@media (max-width:820px){.duo{gap:32px}}
+@media (max-width:640px){.duo figure:first-child,.duo figure:last-child{aspect-ratio:3/4}}
+
+/* PROJEKTY – galeria kategorii: po 12 dużych kaflach do 4 rzędów małych (cz-b), dalej „Archiwa” – lista w dwóch kolumnach */
+.wrow-s{display:flex;align-items:flex-end;gap:6px;margin:0 0 6px;padding-left:var(--lw)}
+.wrow+.wrow-s{margin-top:-24px}
+.wrow-s .wk,.wrow-s .pg-fill{flex:1 1 0;width:auto;min-width:0;transition:flex-grow .75s cubic-bezier(.2,.8,.2,1)}
+.wrow-s .wk-ph img{filter:grayscale(1) contrast(1.04);transition:filter .6s ease}
+.wrow-s .wk.on .wk-ph img{filter:none}
+.wrow-s .wk:hover .wk-ph img{transform:none}
+.wrow-s .wk-cap{padding:36px 12px 10px;font-size:12.5px}.wrow-s .wk-cap i{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (hover:none){.wrow-s .wk-ph img{filter:none}}
+.warch{padding-left:var(--lw);margin-top:64px;margin-bottom:56px}
+.warch-h{position:relative;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--wk-ln);padding:14px 0 6px}
+.warch-h::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--wk-ink)}
+.warch-h .mono{color:var(--wk-dim)}
+.warch-l{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;align-items:start}
+.wa{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--wk-ln);color:var(--wk-ink);text-decoration:none;break-inside:avoid;transition:color .3s}
+.wa:hover{color:var(--hov)}
+.wa-n{position:relative;justify-self:start;min-width:0}
+.wa b{font-weight:500;font-size:17px}
+.wa i{font-style:normal;font-size:13px;color:var(--wk-dim);white-space:nowrap}
+.wa-pv{position:absolute;z-index:6;left:calc(100% + 22px);top:50%;width:var(--pvw,320px);aspect-ratio:3/2;overflow:hidden;background:#4A504C;pointer-events:none;opacity:0;
+  transform:translateY(-50%) scale(.3);transform-origin:0 50%;box-shadow:0 24px 60px rgba(0,0,0,.35);transition:opacity .3s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.wa-pv img{width:100%;height:100%;object-fit:cover}
+.wa:hover .wa-pv{opacity:1;transform:translateY(-50%) scale(1)}
+@media (hover:none){.wa-pv{display:none}}
+@media (max-width:720px){.warch-l{grid-template-columns:1fr}}
 </style>
 
 <header class="top" id="hdr">
@@ -558,7 +625,7 @@ main .wrap.wwide{margin-top:110px}
   <section id="projekty" class="works">
     <div class="wrap">
       <div class="head">
-        <div><span class="mono">Portfolio</span><h2>Projekty</h2></div>
+        <div><span class="mono">Portfolio</span><h2 id="works-t" role="button" tabindex="0" title="Wróć do przeglądu kategorii">Projekty</h2></div>
         <p class="lead-w">Kliknij nazwę kategorii, żeby rozwinąć jej galerię, albo okładkę, żeby zobaczyć projekt w przestrzeni.</p>
         <div class="filters rail" role="group" aria-label="Filtruj projekty">
           <button class="chip" aria-pressed="false" data-f="domy">Domy</button>
@@ -605,8 +672,8 @@ main .wrap.wwide{margin-top:110px}
       </div>
     </div>
     <div class="wrap duo" style="margin-top:0">
-      <figure class="par"><img loading="lazy" src="img/dom-sleza.jpg" alt="Wizualizacja: dom w Ślęży"><figcaption>Dom w Ślęży, gmina Kobierzyce</figcaption></figure>
-      <figure class="par"><img loading="lazy" src="img/kosciol-wnetrze.jpg" alt="Wizualizacja: wnętrze kościoła, Szmaragdowe Wzgórze"><figcaption>Wnętrze kościoła, Szmaragdowe Wzgórze</figcaption></figure>
+      <figure class="par rel"><img loading="lazy" src="img/relacje.jpg?v=4" alt="Ludzie Metafory przy lampce wina"><figcaption>Relacje – od nich zaczyna się każdy projekt</figcaption></figure>
+      <figure class="par full"><img loading="lazy" src="img/portret.jpg?v=2" alt="Portret w fotelu"></figure>
     </div>
     </div>
     <div class="mpanel" id="mp-uslugi" hidden>
@@ -768,15 +835,19 @@ main .wrap.wwide{margin-top:110px}
 </div>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Podgląd projektu">
-  <img id="lb-img" alt="">
+  <div class="lb-stage" id="lb-stage">
+    <div class="lb-track" id="lb-track"><img class="lb-s" alt="" draggable="false"><img class="lb-s" id="lb-img" alt="" draggable="false"><img class="lb-s" alt="" draggable="false"></div>
+    <i class="lb-ar l"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="9,1 1,9 9,17"/></svg></i><i class="lb-ar r"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="47,1 55,9 47,17"/></svg></i>
+  </div>
   <div class="lbcap" id="lb-cap"></div>
   <div class="lbbar"><button id="lb-prev">← Poprzedni</button><button id="lb-close">Zamknij</button><button id="lb-next">Następny →</button></div>
 </div>
 
 <script>
-const PR=[
+/* x:1 = projekt wypięty ze strony (jeszcze nieopracowany); usunięcie x:1 przywraca go */
+const PR_ALL=[
  {s:"dom-anik-pod-sleza",t:"Dom pod Ślężą",w:"gmina Kobierzyce",y:"2025",n:9,r:[1.777, 1.777, 1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.776],c:"4/5",k:"domy"},
- {s:"dom-k2-wierzbice",t:"Dom K2",w:"Wierzbice",y:"2024",n:9,r:[1.777, 1.776, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
+ {s:"dom-k2-wierzbice",x:1,t:"Dom K2",w:"Wierzbice",y:"2024",n:9,r:[1.777, 1.776, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
  {s:"dom-chwalowice",t:"Dom w Chwałowicach",w:"",y:"2020",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
  {s:"dom-grottgera-wroclaw",t:"Dom przy Grottgera",w:"Wrocław",y:"2011",n:4,r:[1.333, 1.333, 1.333, 1.333],c:"3/2",k:"domy"},
  {s:"dom-wilczyce-r",t:"Dom w Wilczycach",w:"",n:8,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.779, 1.777, 1.784],c:"4/5",k:"domy"},
@@ -787,58 +858,62 @@ const PR=[
  {s:"dom-kudowa-zdroj",t:"Dom w Kudowie",w:"Kudowa-Zdrój",y:"2014",n:7,r:[1.424, 1.427, 1.5, 1.427, 1.343, 1.549, 1.163],c:"4/5",k:"domy"},
  {s:"dom-bialy-kosciol",t:"Dom w Białym Kościele",w:"",y:"2022",n:3,r:[1.777, 1.777, 1.777],c:"3/2",k:"domy"},
  {s:"dom-clt-probono-czerna",t:"Dom z CLT w Czernej",w:"",y:"2026",n:7,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"3/2",k:"domy"},
- {s:"dom-w-trzcinsku-2",t:"Dom w Trzcińsku II",w:"Rudawy Janowickie",y:"2026",n:9,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
- {s:"dom-mati-z-pergola",t:"Dom z pergolą",w:"",y:"2024",n:4,r:[1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
- {s:"dom-ostrow-p",t:"Dom w Ostrowie",w:"",y:"2019",n:7,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
- {s:"dom-czernica",t:"Dom w Czernicy",w:"gmina Czernica",y:"2007",n:4,r:[1.621, 1.621, 1.621, 1.621],c:"4/5",k:"domy"},
- {s:"dom-k6",t:"Dom K6",w:"",y:"2007",n:4,r:[3.0, 1.707, 1.895, 1.707],c:"5/4",k:"domy"},
- {s:"dom-z-carportem-ladecka",t:"Dom z carportem",w:"ul. Lądecka",y:"2026",n:3,r:[1.25, 1.25, 1.777],c:"4/5",k:"domy"},
- {s:"strona-2014-album-09",t:"Dom w górach",w:"",y:"do 2014",n:3,r:[1.777, 1.777, 1.777],c:"1/1",k:"domy"},
- {s:"strona-2014-album-01",t:"Dom z łupkowym szczytem",w:"",y:"do 2014",n:2,r:[1.333, 1.23],c:"4/5",k:"domy"},
+ {s:"dom-w-trzcinsku-2",x:1,t:"Dom w Trzcińsku II",w:"Rudawy Janowickie",y:"2026",n:9,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
+ {s:"dom-mati-z-pergola",x:1,t:"Dom z pergolą",w:"",y:"2024",n:4,r:[1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
+ {s:"dom-ostrow-p",x:1,t:"Dom w Ostrowie",w:"",y:"2019",n:7,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
+ {s:"dom-czernica",x:1,t:"Dom w Czernicy",w:"gmina Czernica",y:"2007",n:4,r:[1.621, 1.621, 1.621, 1.621],c:"4/5",k:"domy"},
+ {s:"dom-k6",x:1,t:"Dom K6",w:"",y:"2007",n:4,r:[3.0, 1.707, 1.895, 1.707],c:"5/4",k:"domy"},
+ {s:"dom-z-carportem-ladecka",x:1,t:"Dom z carportem",w:"ul. Lądecka",y:"2026",n:3,r:[1.25, 1.25, 1.777],c:"4/5",k:"domy"},
+ {s:"strona-2014-album-09",x:1,t:"Dom w górach",w:"",y:"do 2014",n:3,r:[1.777, 1.777, 1.777],c:"1/1",k:"domy"},
+ {s:"strona-2014-album-01",x:1,t:"Dom z łupkowym szczytem",w:"",y:"do 2014",n:2,r:[1.333, 1.23],c:"4/5",k:"domy"},
  {s:"parkowa-ostroda",t:"Parkowa",w:"Ostróda, ul. Parkowa 25 · zespół domów szeregowych",y:"2020",n:11,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"mieszkaniowe"},
  {s:"mieszk-ostroda-jaracza",t:"Zespół domów w Ostródzie",w:"ul. Jaracza",y:"2014",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-ostroda-lipowa",t:"Domy w Ostródzie",w:"ul. Lipowa",y:"2014",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-ostroda-b",t:"Budynek w Ostródzie",w:"Ostróda",n:4,r:[1.414, 1.333, 1.414, 1.414],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-ostroda-2019",t:"Zespół domów w Ostródzie",w:"Ostróda",y:"2019",n:6,r:[1.416, 1.565, 1.333, 1.314, 1.334, 1.334],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-apartamenty-szczytna",t:"Apartamenty w Szczytnej",w:"Szczytna",y:"2012",n:6,r:[1.667, 1.25, 1.667, 1.667, 1.25, 1.25],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-bielawa",t:"Budynek wielorodzinny w Bielawie",w:"Bielawa",n:6,r:[1.481, 1.481, 1.481, 1.481, 1.5, 1.333],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-oltaszyn",t:"Budynek wielorodzinny na Ołtaszynie",w:"Wrocław",y:"2024",n:5,r:[1.333, 1.333, 1.333, 1.333, 1.333],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-ostroda-solskiego",t:"Szeregowce w Ostródzie",w:"ul. Solskiego",y:"2015",n:5,r:[1.509, 1.509, 1.509, 1.509, 1.509],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-radwanice",t:"Zabudowa w Radwanicach",w:"Radwanice",n:4,r:[1.481, 1.481, 1.481, 1.556],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-wojnow",t:"Zabudowa w Wojnowie",w:"Wojnów",y:"2018",n:4,r:[1.333, 1.333, 1.674, 1.719],c:"1/1",k:"mieszkaniowe"},
- {s:"hotel-holiday-inn-express",t:"Hotel Holiday Inn Express",w:"",y:"2020",n:7,r:[1.415, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
- {s:"hotel-brzeg",t:"Hotel w Brzegu",w:"Brzeg",y:"2014",n:7,r:[1.499, 1.499, 1.499, 1.333, 1.475, 1.499, 1.499],c:"1/1",k:"hotele"},
- {s:"hotel-haston",t:"Hotel Haston",w:"",y:"2015",n:5,r:[1.5, 1.5, 1.5, 1.5, 1.5],c:"1/1",k:"hotele"},
- {s:"hotel-scandic",t:"Hotel Scandic",w:"",y:"2014",n:6,r:[1.501, 1.501, 1.501, 1.501, 1.501, 1.501],c:"1/1",k:"hotele"},
- {s:"hotel-zoo",t:"Hotel ZOO",w:"",y:"2018",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
- {s:"hotel-radisson-warszawa",t:"Hotel Radisson",w:"Warszawa",y:"2015",n:6,r:[1.774, 1.774, 1.774, 1.0, 1.774, 1.774],c:"1/1",k:"hotele"},
- {s:"pensjonat-mrzezyno",t:"Pensjonat w Mrzeżynie",w:"Mrzeżyno",y:"2021",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
- {s:"hotel-aleksandra",t:"Hotel Aleksandra",w:"",y:"2015",n:4,r:[0.808, 0.625, 1.014, 1.782],c:"1/1",k:"hotele"},
- {s:"kosciol-szmaragdowe-wzgorze",t:"Wnętrze kościoła",w:"Szmaragdowe Wzgórze",y:"2023",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
- {s:"biura-chodakowska",t:"Wnętrza biurowe",w:"Warszawa, ul. Chodakowska",y:"2024",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
- {s:"hospicjum-swidnica",t:"Biura hospicjum",w:"Świdnica",y:"2026",n:5,r:[1.777, 1.25, 1.5, 1.777, 1.5],c:"1/1",k:"komercyjne"},
- {s:"kom-hala-blonie",t:"Hala serwisowa w Błoniu",w:"gmina Miękinia",y:"2024",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
- {s:"kom-fort-warszawa",t:"Fort",w:"Warszawa",y:"2023",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
- {s:"kom-olawa",t:"Budynek w Oławie",w:"Oława",y:"2008",n:4,r:[1.424, 1.333, 1.333, 1.332],c:"1/1",k:"komercyjne"},
- {s:"kom-kamienna-gora",t:"Obiekt w Kamiennej Górze",w:"Kamienna Góra",y:"2026",n:4,r:[1.333, 1.333, 1.333, 0.75],c:"1/1",k:"komercyjne"},
- {s:"kom-teobankologia",t:"Teobankologia",w:"",y:"2025",n:4,r:[1.414, 1.414, 1.414, 2.0],c:"1/1",k:"komercyjne"},
- {s:"kom-hala-szczecinska",t:"Hala przy Szczecińskiej",w:"",y:"2017",n:3,r:[1.768, 1.779, 1.777],c:"1/1",k:"komercyjne"},
- {s:"kom-akademia-konska",t:"Akademia Końska",w:"Kuraszków",y:"2015",n:4,r:[1.703, 1.358, 1.382, 1.318],c:"1/1",k:"komercyjne"},
- {s:"kom-miekinia",t:"Obiekt w Miękini",w:"Miękinia",y:"2022",n:4,r:[1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"mieszk-ostroda-b",x:1,t:"Budynek w Ostródzie",w:"Ostróda",n:4,r:[1.414, 1.333, 1.414, 1.414],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-ostroda-2019",x:1,t:"Zespół domów w Ostródzie",w:"Ostróda",y:"2019",n:6,r:[1.416, 1.565, 1.333, 1.314, 1.334, 1.334],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-apartamenty-szczytna",x:1,t:"Apartamenty w Szczytnej",w:"Szczytna",y:"2012",n:6,r:[1.667, 1.25, 1.667, 1.667, 1.25, 1.25],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-bielawa",x:1,t:"Budynek wielorodzinny w Bielawie",w:"Bielawa",n:6,r:[1.481, 1.481, 1.481, 1.481, 1.5, 1.333],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-oltaszyn",x:1,t:"Budynek wielorodzinny na Ołtaszynie",w:"Wrocław",y:"2024",n:5,r:[1.333, 1.333, 1.333, 1.333, 1.333],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-ostroda-solskiego",x:1,t:"Szeregowce w Ostródzie",w:"ul. Solskiego",y:"2015",n:5,r:[1.509, 1.509, 1.509, 1.509, 1.509],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-radwanice",x:1,t:"Zabudowa w Radwanicach",w:"Radwanice",n:4,r:[1.481, 1.481, 1.481, 1.556],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-wojnow",x:1,t:"Zabudowa w Wojnowie",w:"Wojnów",y:"2018",n:4,r:[1.333, 1.333, 1.674, 1.719],c:"1/1",k:"mieszkaniowe"},
+ {s:"hotel-holiday-inn-express",v:2,t:"Hotel Holiday Inn Express",w:"Wrocław",y:"2020",n:4,r:[1.777,1.777,1.777,1.777],c:"1/1",k:"hotele"},
+ {s:"hotel-brzeg",t:"Hotel w Brzegu",w:"Brzeg",y:"2014",n:9,r:[1.499,1.309,0.619,1.499,1.499,1.5,1.475,1.499,1.333],c:"1/1",k:"hotele",g:{0:"Realizacja · zdjęcia 2015",8:"Projekt · wizualizacja recepcji"}},
+ {s:"hotel-haston",x:1,t:"Hotel Haston",w:"",y:"2015",n:5,r:[1.5, 1.5, 1.5, 1.5, 1.5],c:"1/1",k:"hotele"},
+ {s:"hotel-scandic",v:2,t:"Hotel Scandic",w:"",y:"2014",n:12,r:[1.488,1.491,1.512,1.512,1.524,1.403,1.373,1.454,1.5,1.483,1.504,1.513],c:"1/1",k:"hotele"},
+ {s:"hotel-zoo",x:1,t:"Hotel ZOO",w:"",y:"2018",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
+ {s:"hotel-radisson-warszawa",x:1,t:"Hotel Radisson",w:"Warszawa",y:"2015",n:6,r:[1.774, 1.774, 1.774, 1.0, 1.774, 1.774],c:"1/1",k:"hotele"},
+ {s:"pensjonat-mrzezyno",x:1,t:"Pensjonat w Mrzeżynie",w:"Mrzeżyno",y:"2021",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
+ {s:"hotel-aleksandra",x:1,t:"Hotel Aleksandra",w:"",y:"2015",n:4,r:[0.808, 0.625, 1.014, 1.782],c:"1/1",k:"hotele"},
+ {s:"kosciol-szmaragdowe-wzgorze",x:1,t:"Wnętrze kościoła",w:"Szmaragdowe Wzgórze",y:"2023",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"biura-chodakowska",x:1,t:"Wnętrza biurowe",w:"Warszawa, ul. Chodakowska",y:"2024",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"hospicjum-swidnica",x:1,t:"Biura hospicjum",w:"Świdnica",y:"2026",n:5,r:[1.777, 1.25, 1.5, 1.777, 1.5],c:"1/1",k:"komercyjne"},
+ {s:"kom-hala-blonie",x:1,t:"Hala serwisowa w Błoniu",w:"gmina Miękinia",y:"2024",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"kom-fort-warszawa",x:1,t:"Fort",w:"Warszawa",y:"2023",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"kom-olawa",x:1,t:"Budynek w Oławie",w:"Oława",y:"2008",n:4,r:[1.424, 1.333, 1.333, 1.332],c:"1/1",k:"komercyjne"},
+ {s:"kom-kamienna-gora",x:1,t:"Obiekt w Kamiennej Górze",w:"Kamienna Góra",y:"2026",n:4,r:[1.333, 1.333, 1.333, 0.75],c:"1/1",k:"komercyjne"},
+ {s:"kom-teobankologia",x:1,t:"Teobankologia",w:"",y:"2025",n:4,r:[1.414, 1.414, 1.414, 2.0],c:"1/1",k:"komercyjne"},
+ {s:"kom-hala-szczecinska",x:1,t:"Hala przy Szczecińskiej",w:"",y:"2017",n:3,r:[1.768, 1.779, 1.777],c:"1/1",k:"komercyjne"},
+ {s:"kom-akademia-konska",x:1,t:"Akademia Końska",w:"Kuraszków",y:"2015",n:4,r:[1.703, 1.358, 1.382, 1.318],c:"1/1",k:"komercyjne"},
+ {s:"kom-miekinia",x:1,t:"Obiekt w Miękini",w:"Miękinia",y:"2022",n:4,r:[1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
  {s:"wnetrze-poznan-staszica",t:"Apartament Poznań",w:"ul. Staszica · wyróżnienie Remont Roku 2018",y:"2018–2019",n:25,r:[1.777,1.777,1.777,1.777,1.777,1.777,1.5,0.75,0.75,0.898,0.713,0.595,0.75,1.489,1.333,1.333,1.5,1.333,0.75,1.442,0.549,0.531,0.667,0.732,1.617],c:"1/1",k:"wnetrza",
   d:"Mieszkanie 37 m² na parterze oficyny kamienicy w Poznaniu, podzielone na dwa niezależne lokale bez przestawiania istniejących ścian. Koncepcja zdobyła wyróżnienie w konkursie Remont Roku 2018 miesięcznika „Murator”, a rok później została zrealizowana. Zachowaliśmy surową cegłę kamienicy, częściowo bieloną, ościeża okien wykończyliśmy stalową blachą, a nad korytarzem zawiesiliśmy antresolę. Drewno ociepla wnętrze, a światło smużące wydobywa fakturę ścian.",
   g:{0:"Koncepcja konkursowa · 2018 · wyróżnienie w konkursie Remont Roku 2018",6:"Realizacja 2019 · lokal A",13:"Realizacja 2019 · lokal B",22:"Realizacja 2019 · część wspólna i detale"}},
- {s:"wnetrze-kuchnia",t:"Kuchnia z jadalnią",w:"Wrocław, ul. Na Ostatnim Groszu",y:"2026",n:1,r:[1.778],c:"4/5",k:"wnetrza"},
- {s:"dom-clt-kuchnia",t:"Wnętrze domu z CLT",w:"Czerna",y:"2026",n:1,r:[1.394],c:"1/1",k:"wnetrza"},
- {s:"lazienka-warszawa",t:"Łazienka",w:"Warszawa",y:"2026",n:1,r:[0.847],c:"4/5",k:"wnetrza"},
+ {s:"wnetrze-angel-river",t:"Apartament Angel River",w:"Wrocław",y:"2024",n:15,r:[1.303,1.258,1.333,0.714,0.714,0.676,0.581,0.595,0.687,0.563,0.798,0.564,0.564,0.614,0.563],c:"1/1",k:"wnetrza",
+  d:"Apartament wysoko nad Wrocławiem, w budynku Angel River, z widokiem na panoramę miasta. Przez całe mieszkanie prowadzi jasny dąb ułożony w jodełkę francuską, ściany dzielą klasyczne ramy sztukaterii, a płyty o wyrazistym, marmurowym użyleniu budują wyspę kuchenną i łazienki. W strefie dziennej centralne miejsce zajmuje przeszklona winiarnia w czarnych stalowych ramach. Sypialnie otulają tapicerowane wezgłowia na całą ścianę, a mosiężne detale spinają wnętrze w spokojną, elegancką całość. Zdjęcia z realizacji.",
+  g:{0:"Strefa dzienna · salon, kuchnia, winiarnia",8:"Strefa nocna · sypialnie i łazienki"}},
+ {s:"wnetrze-kuchnia",x:1,t:"Kuchnia z jadalnią",w:"Wrocław, ul. Na Ostatnim Groszu",y:"2026",n:1,r:[1.778],c:"4/5",k:"wnetrza"},
+ {s:"dom-clt-kuchnia",x:1,t:"Wnętrze domu z CLT",w:"Czerna",y:"2026",n:1,r:[1.394],c:"1/1",k:"wnetrza"},
+ {s:"lazienka-warszawa",x:1,t:"Łazienka",w:"Warszawa",y:"2026",n:1,r:[0.847],c:"4/5",k:"wnetrza"},
  {s:"design-dystrybutor-4tu",t:"Dystrybutor paliw 4-TU",w:"dla ZAP Petro",y:"2003",n:10,r:[0.75, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],c:"1/1",k:"design"},
  {s:"design-lampa-unic",t:"Lampa UNIC",w:"",y:"2020",n:3,r:[1.777, 1.777, 1.777],c:"1/1",k:"design"},
- {s:"design-slupek-infomat",t:"Słupek informacyjny Infomat",w:"dla ZAP Petro",y:"2002",n:2,r:[0.708, 0.708],c:"1/1",k:"design"},
- {s:"scena-wizyta-starszej-pani",t:"Wizyta starszej pani",w:"scenografia · makieta i koncepcja · Hania, ASP",y:"2024",n:12,r:[1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.414,1.414,1.414,1.414],c:"1/1",k:"scena"},
- {s:"scena-antygona",t:"Antygona",w:"scenografia · Hania, ASP",y:"2024",n:5,r:[1.414,1.414,1.414,1.414,1.414],c:"1/1",k:"scena"},
- {s:"scena-projekcje",t:"Projekcje",w:"scenografia projekcyjna · dokumentacja · Hania, ASP",y:"2024",n:9,r:[1.284,1.344,1.377,1.268,1.334,1.289,1.343,1.333,1.387],c:"1/1",k:"scena"},
- {s:"scena-pokoj",t:"Pokój",w:"studium przestrzeni scenicznej · Hania, ASP",y:"2024",n:4,r:[1.414,1.414,1.414,1.414],c:"1/1",k:"scena"}
+ {s:"design-slupek-infomat",x:1,t:"Słupek informacyjny Infomat",w:"dla ZAP Petro",y:"2002",n:2,r:[0.708, 0.708],c:"1/1",k:"design"},
+ {s:"scena-wizyta-starszej-pani",x:1,t:"Wizyta starszej pani",w:"scenografia · makieta i koncepcja · Hania, ASP",y:"2024",n:12,r:[1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.414,1.414,1.414,1.414],c:"1/1",k:"scena"},
+ {s:"scena-antygona",x:1,t:"Antygona",w:"scenografia · Hania, ASP",y:"2024",n:5,r:[1.414,1.414,1.414,1.414,1.414],c:"1/1",k:"scena"},
+ {s:"scena-projekcje",x:1,t:"Projekcje",w:"scenografia projekcyjna · dokumentacja · Hania, ASP",y:"2024",n:9,r:[1.284,1.344,1.377,1.268,1.334,1.289,1.343,1.333,1.387],c:"1/1",k:"scena"},
+ {s:"scena-pokoj",x:1,t:"Pokój",w:"studium przestrzeni scenicznej · Hania, ASP",y:"2024",n:4,r:[1.414,1.414,1.414,1.414],c:"1/1",k:"scena"}
 ];
+const PR=PR_ALL.filter(p=>!p.x);
 const grid=document.getElementById("grid");
 const colsN=()=>innerWidth<=560?1:(innerWidth<=1000?2:3);
 const pad=n=>String(n).padStart(2,"0");
@@ -846,6 +921,7 @@ const pad=n=>String(n).padStart(2,"0");
 let curF="all";
 const CATS=[["domy","Domy"],["mieszkaniowe","Mieszkaniowe"],["hotele","Hotele"],["komercyjne","Komercyjne"],["wnetrza","Wnętrza"],["design","Design"],["scena","Scena"]];
 const catName=k=>(CATS.find(c=>c[0]===k)||[,""])[1];
+const CAT_BROWS=3,CAT_SROWS=2; /* galeria kategorii: 3 rzędy dużych kafli, 2 rzędy małych, reszta w „Archiwach” */
 const KN={domy:"dom jednorodzinny",mieszkaniowe:"zabudowa mieszkaniowa",hotele:"hotel",komercyjne:"obiekt komercyjny",wnetrza:"wnętrze",design:"design",scena:"scenografia"};
 function render(f){
   if(f)curF=f;
@@ -853,8 +929,19 @@ function render(f){
   placeLabels();
   document.querySelectorAll(".works .chip").forEach(x=>x.setAttribute("aria-pressed",x.dataset.f===curF));
 }
+/* podgląd w „Archiwach” ma 75% szerokości dużego kafla */
+function setPvw(){const w=grid.querySelector(".wrow .wk");grid.style.setProperty("--pvw",Math.round((w?w.offsetWidth:420)*.75)+"px")}
+/* mały kafel w galerii kategorii: po najechaniu nabiera koloru i rośnie do wysokości dużego kafla, sąsiednie ustępują */
+function catGrow(b){const row=b.parentElement,tiles=[...row.children],cs=getComputedStyle(row),gap=parseFloat(cs.columnGap)||6;
+  const ph=[...grid.querySelectorAll(".wrow .wk-ph")],Hb=Math.min(ph.length?ph.reduce((s,x)=>s+x.offsetHeight,0)/ph.length:260,innerHeight*.62);
+  const W=row.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-(tiles.length-1)*gap,wk=Math.min(+b.dataset.a*Hb,W*.62);
+  const S=tiles.reduce((s,x)=>x===b?s:s+(+x.dataset.r),0);
+  tiles.forEach(x=>{x.classList.toggle("on",x===b);x.style.flexGrow=x===b?(wk*S/Math.max(1,W-wk)).toFixed(4):x.dataset.r})}
+function catReset(row){[...row.children].forEach(x=>{x.classList.remove("on");x.style.flexGrow=x.dataset.r})}
+grid.addEventListener("pointerover",e=>{if(e.pointerType&&e.pointerType!=="mouse")return;const b=e.target.closest(".wrow-s .wk");if(b&&!b.classList.contains("on"))catGrow(b)});
+grid.addEventListener("pointerout",e=>{const row=e.target.closest(".wrow-s");if(row&&!(e.relatedTarget&&row.contains(e.relatedTarget)))catReset(row)});
 /* napis kategorii stoi na linii dołu pierwszego zdjęcia w rzędzie */
-function placeLabels(){grid.querySelectorAll(".wrow>.vlab").forEach(v=>{const r=v.parentElement,ph=r.querySelector(".wk-ph");if(ph){const wk=ph.parentElement;v.style.bottom=(r.clientHeight-(wk.offsetTop+ph.offsetTop+ph.offsetHeight))+"px";
+function placeLabels(){setPvw();grid.querySelectorAll(".wrow>.vlab").forEach(v=>{const r=v.parentElement,ph=r.querySelector(".wk-ph");if(ph){const wk=ph.parentElement;v.style.bottom=(r.clientHeight-(wk.offsetTop+ph.offsetTop+ph.offsetHeight))+"px";
     const t=v.nextElementSibling,ln=wk.querySelector(".wk-cap i");if(t&&ln){const lh=parseFloat(getComputedStyle(ln).lineHeight)||ln.offsetHeight;t.style.top=(wk.offsetTop+ln.offsetTop+lh/2)+"px"}}})}
 document.fonts&&document.fonts.ready.then(()=>placeLabels());
 function rowsHTML(F){
@@ -866,7 +953,7 @@ function rowsHTML(F){
   /* pionowy napis kategorii na pierwszym zdjęciu wiersza: klik rozwija galerię tej kategorii (albo wraca do przeglądu) */
   const lab=k=>`<span class="vlab" data-f="${k}" role="button" tabindex="0" aria-label="${curF===k?"Wróć do przeglądu kategorii":"Rozwiń galerię: "+catName(k)}"><span class="t"><span>${catName(k)}</span><span aria-hidden="true">${catName(k)}</span></span></span><i class="vtick" aria-hidden="true"></i>`;
   const tile=(p,w,r,pat,first,k)=>{const i=PR.indexOf(p);return `<a class="wk" href="#projekt/${p.s}" data-s="${p.s}" aria-label="Projekt: ${p.t}" style="width:calc(${w}% - ${(8*(pat.length-1)/pat.length).toFixed(2)}px)">
-    <span class="wk-ph" style="aspect-ratio:${r}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg" alt="Wizualizacja: ${p.t}"></span>
+    <span class="wk-ph" style="aspect-ratio:${r}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt="Wizualizacja: ${p.t}"></span>
     <span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></span><span class="mono">${pad(i+1)}</span></span></a>`};
   const empty=k=>`<div class="wk empty" style="width:${n===1?100:46}%"><span class="wk-ph" style="aspect-ratio:3/2"><span class="soon">${catName(k)} · wkrótce</span></span><span class="wk-cap"><span><b>${catName(k)}</b><i>projekty w przygotowaniu</i></span></span></div>`;
   let ri=0;
@@ -876,7 +963,18 @@ function rowsHTML(F){
       if(row.length===pat.length||j===A.length-1){out.push(`<div class="wrow" data-k="${k}">${out.length===0?lab(k):""}${row.join("")}</div>`);row=[];ri++}});
     return out};
   if(curF==="all")CATS.forEach(([k])=>C.push(...rowsOf(PR.filter(p=>p.k===k),k,PAT[ri%PAT.length].length)));
-  else C.push(...rowsOf(PR.filter(p=>p.k===curF),curF));
+  else C.push(...catHTML(PR.filter(p=>p.k===curF),curF));
+  /* galeria kategorii: 3 rzędy dużych kafli, potem 2 rzędy małych czarno-białych, reszta jako lista „Archiwa” w dwóch kolumnach */
+  function catHTML(L,k){
+    const big=CAT_BROWS*n,out=rowsOf(L.slice(0,big),k),rest=L.slice(big);if(!rest.length)return out;
+    const per=n===3?9:(n===2?6:3),sm=rest.slice(0,per*CAT_SROWS),arch=rest.slice(per*CAT_SROWS);
+    const rnd=q=>{const x=Math.sin(q*12.9898+3.7)*43758.5453;return x-Math.floor(x)},SA=[1.25,1,1.5,.8,1.333,1.6];
+    const stile=p=>{const i=PR.indexOf(p),a=SA[(i*5+2)%SA.length],g=(a*(.62+.38*rnd(i+3))).toFixed(4);
+      return `<a class="wk wk-s" href="#projekt/${p.s}" data-s="${p.s}" data-a="${a}" data-r="${g}" style="flex-grow:${g}" aria-label="Projekt: ${p.t}"><span class="wk-ph" style="aspect-ratio:${a}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt="Projekt: ${p.t}"></span><span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></span></span></a>`};
+    for(let i=0;i<sm.length;i+=per){const R=sm.slice(i,i+per),miss=per-R.length,fg=(miss*1.1).toFixed(3);
+      out.push(`<div class="wrow-s" data-k="${k}">${R.map(stile).join("")}${miss?`<i class="pg-fill" data-r="${fg}" style="flex-grow:${fg}"></i>`:""}</div>`)}
+    if(arch.length)out.push(`<div class="warch" data-k="${k}"><div class="warch-h"><span class="mono">Archiwa</span><span class="mono">${arch.length}</span></div><div class="warch-l">${[arch.slice(0,Math.ceil(arch.length/2)),arch.slice(Math.ceil(arch.length/2))].map(C=>`<div class="wa-c">${C.map(p=>`<a class="wa" href="#projekt/${p.s}" data-s="${p.s}"><span class="wa-n"><b>${p.t}</b><span class="wa-pv" aria-hidden="true"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt=""></span></span><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></a>`).join("")}</div>`).join("")}</div></div>`);
+    return out}
   return C.join("");
 }
 render();
@@ -924,6 +1022,8 @@ function setF(f){
 }
 document.querySelectorAll(".chip").forEach(b=>{if(b.querySelector(".t"))return;const t=b.textContent.trim();b.innerHTML=`<span class="t"><span>${t}</span><span aria-hidden="true">${t}</span></span>`});
 document.querySelectorAll(".works .chip").forEach(b=>b.addEventListener("click",()=>setF(b.dataset.f)));
+/* klik w tytuł „Projekty” – powrót z galerii kategorii do rzędów wszystkich kategorii */
+{const wt=document.getElementById("works-t"),back=()=>{if(curF!=="all")setF("all")};wt.addEventListener("click",back);wt.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();back()}})}
 grid.addEventListener("click",e=>{const v=e.target.closest(".vlab");if(v){e.preventDefault();e.stopPropagation();setF(v.dataset.f)}},true);
 grid.addEventListener("keydown",e=>{const v=e.target.closest(".vlab");if(v&&(e.key==="Enter"||e.key===" ")){e.preventDefault();e.stopPropagation();setF(v.dataset.f)}},true);
 /* ziarno starej taśmy na filmie: szum generowany raz w canvas */
@@ -1060,20 +1160,45 @@ document.querySelectorAll(".mtabs .chip").forEach(b=>b.addEventListener("click",
     S.lam+=dl*k;S.phi+=(T.phi-S.phi)*k;S.zoom+=(T.zoom-S.zoom)*k;draw()})(last);
 })();
 
-/* lightbox – uniwersalny: lista {src,cap} */
-const lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),lbc=document.getElementById("lb-cap");let L=[],cur=0,last=null;
-function open(list,i){if(list)L=list;cur=(i+L.length)%L.length;lbi.src=L[cur].src;lbi.alt=L[cur].cap;lbc.textContent=L[cur].cap;lb.hidden=false;window.lenis&&lenis.stop();document.getElementById("lb-close").focus()}
+/* lightbox – uniwersalny: lista {src,cap}. Zdjęcie leży na taśmie z sąsiednimi:
+   klik w lewą/prawą połowę = poprzednie/następne, przeciągnięcie odsłania kolejne, działają też strzałki klawiatury */
+const lb=document.getElementById("lb"),lbs=document.getElementById("lb-stage"),lbt=document.getElementById("lb-track"),lbS=[...lbt.children],lbc=document.getElementById("lb-cap");
+let L=[],cur=0,last=null,lbBusy=false;const LBG=48;
+const lbW=()=>lbs.clientWidth;
+function lbPos(dx,anim){lbt.classList.toggle("anim",!!anim);lbt.style.transform=`translateX(${-(lbW()+LBG)+dx}px)`}
+function lbFill(){const n=L.length;[-1,0,1].forEach((d,j)=>{const m=L[((cur+d)%n+n)%n];if(lbS[j].getAttribute("src")!==m.src)lbS[j].src=m.src;lbS[j].alt=d?"":m.cap});
+  lbc.textContent=L[cur].cap;lb.classList.toggle("one",n<2);lbPos(0,false)}
+function open(list,i){if(list)L=list;cur=((i%L.length)+L.length)%L.length;lb.hidden=false;lbFill();window.lenis&&lenis.stop();
+  lbs.classList.remove("hint");void lbs.offsetWidth;if(L.length>1)lbs.classList.add("hint");document.getElementById("lb-close").focus()}
+function go(d){if(lbBusy||L.length<2||lb.hidden)return;lbBusy=true;let ok=false;
+  const done=()=>{if(ok)return;ok=true;lbt.removeEventListener("transitionend",done);cur=((cur+d)%L.length+L.length)%L.length;lbFill();lbBusy=false};
+  lbt.addEventListener("transitionend",done);setTimeout(done,750);lbPos(-d*(lbW()+LBG),true)}
 function close(){lb.hidden=true;if(window.lenis&&pv.hidden)lenis.start();last&&last.focus()}
 document.getElementById("lb-close").onclick=close;
-document.getElementById("lb-prev").onclick=()=>open(null,cur-1);
-document.getElementById("lb-next").onclick=()=>open(null,cur+1);
+document.getElementById("lb-prev").onclick=()=>go(-1);
+document.getElementById("lb-next").onclick=()=>go(1);
 lb.addEventListener("click",e=>{if(e.target===lb)close()});
-addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")open(null,cur+1);if(e.key==="ArrowLeft")open(null,cur-1)});
+addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+addEventListener("resize",()=>{if(!lb.hidden&&!lbBusy)lbPos(0,false)});
+(()=>{let drag=false,px=0,dx=0,t0=0,pid=null;
+  const side=x=>{const r=lbs.getBoundingClientRect();return x<r.left+r.width/2?-1:1};
+  lbs.addEventListener("pointerdown",e=>{if(lbBusy||e.button>0)return;drag=true;px=e.clientX;dx=0;t0=performance.now();pid=e.pointerId;lbs.setPointerCapture(pid);lbs.classList.add("drag")});
+  lbs.addEventListener("pointermove",e=>{
+    if(!drag){const s=side(e.clientX);lbs.classList.toggle("sl",s<0);lbs.classList.toggle("sr",s>0);return}
+    dx=e.clientX-px;if(L.length<2)dx*=.2;lbPos(dx,false);
+    if(Math.abs(dx)>8){lbs.classList.toggle("sl",dx>0);lbs.classList.toggle("sr",dx<0)}});
+  const end=e=>{if(!drag)return;drag=false;lbs.classList.remove("drag");try{lbs.releasePointerCapture(pid)}catch(_){}
+    if(Math.abs(dx)<6){if(e.type==="pointerup"&&L.length>1)go(side(e.clientX));else lbPos(0,true);return}
+    const v=Math.abs(dx)/Math.max(1,performance.now()-t0);
+    if(L.length>1&&(Math.abs(dx)>lbW()*.16||v>.55))go(dx<0?1:-1);else lbPos(0,true)};
+  lbs.addEventListener("pointerup",end);lbs.addEventListener("pointercancel",end);
+  lbs.addEventListener("pointerleave",()=>{if(!drag)lbs.classList.remove("sl","sr")});
+})();
 
 /* ===== podstrona projektu: filmik przestrzenny (głębia 2,5D), galeria, rzut ===== */
 const pv=document.getElementById("pv"),pvs=pv.querySelector(".pv-scroll"),pvGal=document.getElementById("pv-gal");
 let curP=null,openRect=null;
-grid.addEventListener("click",e=>{const a=e.target.closest(".wk");if(a){const r=a.querySelector(".wk-ph").getBoundingClientRect();openRect=r}});
+grid.addEventListener("click",e=>{const a=e.target.closest(".wk,.wa");if(a){const r=(a.querySelector(".wk-ph")||a.querySelector(".wa-pv")).getBoundingClientRect();openRect=r}});
 function projIdx(s){return PR.findIndex(p=>p.s===s)}
 function fillProject(i){
   const p=PR[i];curP=i;
@@ -1085,14 +1210,48 @@ function fillProject(i){
   document.getElementById("pv-k").textContent=({domy:"Dom jednorodzinny",mieszkaniowe:"Zabudowa mieszkaniowa",hotele:"Hotel",komercyjne:"Obiekt komercyjny",wnetrza:"Wnętrze",design:"Design",scena:"Scenografia"})[p.k];
   document.getElementById("pv-plan").hidden=p.k!=="domy";
   document.getElementById("pv-c").textContent=`${pad(i+1)} / ${pad(PR.length)}`;
-  let grp="";const imgs=Array.from({length:p.n},(_,k)=>{if(p.g&&p.g[k])grp=p.g[k];return {src:`p/${p.s}/${pad(k+1)}.jpg`,cap:`${p.t}${grp?" · "+grp:""} · ${pad(k+1)} / ${pad(p.n)}`,r:p.r[k]}});
-  pvGal.innerHTML=imgs.map((m,k)=>(p.g&&p.g[k]?`<h4 class="pg-h">${p.g[k]}</h4>`:"")+`<button class="pg-it" data-k="${k}" aria-label="Powiększ zdjęcie ${k+1}"><span style="aspect-ratio:${m.r}"><img loading="lazy" src="${m.src}" alt="Wizualizacja: ${p.t}, ujęcie ${k+1}"></span></button>`).join("");
+  let grp="";const imgs=Array.from({length:p.n},(_,k)=>{if(p.g&&p.g[k])grp=p.g[k];return {src:`p/${p.s}/${pad(k+1)}.jpg${p.v?"?v="+p.v:""}`,cap:`${p.t}${grp?" · "+grp:""} · ${pad(k+1)} / ${pad(p.n)}`,r:p.r[k]}});
+  pvGal._p=p;pvGal._imgs=imgs;galRender();
   pvGal.onclick=e=>{const b=e.target.closest(".pg-it");if(b){last=b;open(imgs,+b.dataset.k)}};
   const nx=PR[(i+1)%PR.length];const nl=document.getElementById("pv-next");
-  nl.href=`#projekt/${nx.s}`;nl.querySelector("b").textContent=nx.t;nl.querySelector("img").src=`p/${nx.s}/01.jpg`;
+  nl.href=`#projekt/${nx.s}`;nl.querySelector("b").textContent=nx.t;nl.querySelector("img").src=`p/${nx.s}/01.jpg${nx.v?"?v="+nx.v:""}`;
   pvs.scrollTop=0;
-  Film.load(`p/${p.s}/01.jpg`,`p/${p.s}/depth.png`);
+  Film.load(`p/${p.s}/01.jpg${p.v?"?v="+p.v:""}`,`p/${p.s}/depth.png${p.v?"?v="+p.v:""}`);
 }
+/* galeria projektu: do 12 dużych zdjęć w rzędach po 3 (komputer), reszta w małych rzędach po 9.
+   Zdjęcia nie są kadrowane; w każdym rzędzie mają różne wysokości i wspólną linię dołu, więc górne krawędzie skaczą. */
+const GAL_BIG=12;
+const GAL_H=[[1,.74,.88],[.82,1,.7],[.9,.68,1],[.72,.94,.8],[1,.86,.7],[.78,.7,1]];
+const galRnd=k=>{const x=Math.sin(k*12.9898+3.7)*43758.5453;return x-Math.floor(x)};
+function galCols(){const w=innerWidth;return w<=720?[1,3]:(w<=1000?[2,6]:[3,9])}
+function galRender(){
+  const p=pvGal._p,imgs=pvGal._imgs;if(!p)return;
+  const [nb,ns]=galCols();pvGal.dataset.c=nb+"-"+ns;
+  const avg=imgs.reduce((s,m)=>s+m.r,0)/imgs.length,isG=i=>p.g&&p.g[i]!==undefined;
+  let html="",ri=0;
+  const tile=(m,k,h)=>{const g=(m.r*h).toFixed(4);return `<button class="pg-it" data-k="${k}" data-a="${m.r}" data-r="${g}" style="flex-grow:${g}" aria-label="Powiększ zdjęcie ${k+1}"><span style="aspect-ratio:${m.r}"><img loading="lazy" src="${m.src}" alt="${p.t}, ujęcie ${k+1}"></span></button>`};
+  const sec=(from,to,per,cls)=>{let i=from;
+    while(i<to){if(isG(i))html+=`<h4 class="pg-h">${p.g[i]}</h4>`;
+      let end=to;for(let j=i+1;j<to;j++)if(isG(j)){end=j;break}
+      for(let r=i;r<end;r+=per){const R=imgs.slice(r,Math.min(r+per,end)),miss=per-R.length,fg=(miss*avg*.85).toFixed(3),pat=GAL_H[ri%GAL_H.length];
+        /* wysokość kafla: w dużych rzędach wg wzoru rzędu, w małych – zmienna dla każdego zdjęcia */
+        const hs=R.map((m,q)=>per===1?1:(cls==="lg"?pat[q%3]:.6+.4*galRnd(r+q)));
+        html+=`<div class="pg-row ${cls}">${R.map((m,q)=>tile(m,r+q,hs[q])).join("")}${miss>0&&per>1?`<i class="pg-fill" data-r="${fg}" style="flex-grow:${fg}"></i>`:""}</div>`;ri++}
+      i=end}};
+  sec(0,Math.min(GAL_BIG,imgs.length),nb,"lg");
+  if(imgs.length>GAL_BIG)sec(GAL_BIG,imgs.length,ns,"sm");
+  pvGal.innerHTML=html;
+}
+/* mały kafel pod kursorem rośnie do wysokości dużego rzędu; kafel rozszerza się w obie strony, więc kursor zostaje na nim */
+function galGrow(b){const row=b.parentElement,tiles=[...row.children],gap=parseFloat(getComputedStyle(row).columnGap)||6;
+  const bigs=[...pvGal.querySelectorAll(".pg-row.lg")],Hb=bigs.length?bigs.reduce((s,r)=>s+r.offsetHeight,0)/bigs.length:row.clientWidth/4.2;
+  const W=row.clientWidth-(tiles.length-1)*gap,a=+b.dataset.a,wk=Math.min(a*Math.min(Hb,innerHeight*.62),W*.62);
+  const S=tiles.reduce((s,t)=>t===b?s:s+(+t.dataset.r),0);
+  tiles.forEach(t=>{t.classList.toggle("on",t===b);t.style.flexGrow=t===b?(wk*S/Math.max(1,W-wk)).toFixed(4):t.dataset.r})}
+function galReset(row){[...row.children].forEach(t=>{t.classList.remove("on");t.style.flexGrow=t.dataset.r})}
+pvGal.addEventListener("pointerover",e=>{if(e.pointerType&&e.pointerType!=="mouse")return;const b=e.target.closest(".pg-row.sm .pg-it");if(b&&!b.classList.contains("on"))galGrow(b)});
+pvGal.addEventListener("pointerout",e=>{const row=e.target.closest(".pg-row.sm");if(row&&!(e.relatedTarget&&row.contains(e.relatedTarget)))galReset(row)});
+addEventListener("resize",()=>{if(!pv.hidden&&pvGal._p&&pvGal.dataset.c!==galCols().join("-"))galRender()});
 function showPV(i){
   const was=!pv.hidden;fillProject(i);window.popTitle&&window.popTitle(document.getElementById("pv-t"));
   if(was)return;
@@ -1412,7 +1571,7 @@ function sel(b){const v=b.previousElementSibling;const r=document.createRange();
 
   /* 10. pracownia: dwa zdjęcia z paralaksą (różna prędkość) */
   document.querySelectorAll(".duo figure").forEach((f,i)=>{
-    gsap.fromTo(f.querySelector("img"),{yPercent:i?-10:-6},{yPercent:i?10:6,ease:"none",scrollTrigger:{trigger:f,start:"top bottom",end:"bottom top",scrub:.3}});
+    if(!f.classList.contains("full"))gsap.fromTo(f.querySelector("img"),{yPercent:i?-10:-6},{yPercent:i?10:6,ease:"none",scrollTrigger:{trigger:f,start:"top bottom",end:"bottom top",scrub:.3}});
     gsap.fromTo(f,{clipPath:"inset(100% 0% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:1.4,ease:E,delay:i*.15,scrollTrigger:{trigger:f,start:"top 90%",once:true}});
   });
 
