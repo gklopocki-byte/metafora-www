@@ -547,6 +547,15 @@ main .wrap.wwide{margin-top:110px}
 @keyframes lbhint{0%,100%{opacity:0}50%{opacity:.9}}
 @media (hover:none){.lb-ar{opacity:.5}}
 .lb.one .lb-ar{display:none}.lb.one .lb-stage{cursor:default}
+/* LIGHTBOX pełnoekranowy: zdjęcie ograniczone tylko szerokością albo wysokością ekranu, opis na zdjęciu, krzyżyk w rogu */
+.lb{padding:0;gap:0;background:#1E211F}
+.lb-stage{height:100vh;height:100dvh}
+.lb .lbcap{position:absolute;z-index:2;left:max(24px,env(safe-area-inset-left,0px));right:96px;bottom:calc(18px + env(safe-area-inset-bottom,0px));text-align:left;font-size:14px;line-height:1.4;color:#F2F3F1;text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.45);pointer-events:none}
+.lb .lb-x{position:absolute;z-index:3;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:48px;height:48px;padding:0;margin:0;border:0;border-radius:50%;background:rgba(30,33,31,.42);cursor:pointer;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s}
+.lb .lb-x::before,.lb .lb-x::after{content:"";position:absolute;left:50%;top:50%;width:24px;height:2px;margin:-1px 0 0 -12px;background:#F2F3F1;transform:rotate(45deg);transition:background .3s}
+.lb .lb-x::after{transform:rotate(-45deg)}
+.lb .lb-x:hover{transform:rotate(90deg);background:rgba(30,33,31,.7)}
+.lb .lb-x:hover::before,.lb .lb-x:hover::after{background:#9BDB7F}
 #works-t{cursor:pointer;transition:color .3s}#works-t:hover{color:var(--hov)}
 /* METAFORA: zdjęcia w tej samej siatce co tekst nad nimi (lewe pod „relacjami”, prawe pod opisem) */
 .duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
@@ -840,7 +849,7 @@ main .wrap.wwide{margin-top:110px}
     <i class="lb-ar l"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="9,1 1,9 9,17"/></svg></i><i class="lb-ar r"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="47,1 55,9 47,17"/></svg></i>
   </div>
   <div class="lbcap" id="lb-cap"></div>
-  <div class="lbbar"><button id="lb-prev">← Poprzedni</button><button id="lb-close">Zamknij</button><button id="lb-next">Następny →</button></div>
+  <button class="lb-x" id="lb-close" aria-label="Zamknij"></button>
 </div>
 
 <script>
@@ -877,10 +886,10 @@ const PR_ALL=[
  {s:"mieszk-ostroda-solskiego",x:1,t:"Szeregowce w Ostródzie",w:"ul. Solskiego",y:"2015",n:5,r:[1.509, 1.509, 1.509, 1.509, 1.509],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-radwanice",x:1,t:"Zabudowa w Radwanicach",w:"Radwanice",n:4,r:[1.481, 1.481, 1.481, 1.556],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-wojnow",x:1,t:"Zabudowa w Wojnowie",w:"Wojnów",y:"2018",n:4,r:[1.333, 1.333, 1.674, 1.719],c:"1/1",k:"mieszkaniowe"},
- {s:"hotel-holiday-inn-express",v:2,t:"Hotel Holiday Inn Express",w:"Wrocław",y:"2020",n:4,r:[1.777,1.777,1.777,1.777],c:"1/1",k:"hotele"},
- {s:"hotel-brzeg",t:"Hotel w Brzegu",w:"Brzeg",y:"2014",n:9,r:[1.499,1.309,0.619,1.499,1.499,1.5,1.475,1.499,1.333],c:"1/1",k:"hotele",g:{0:"Realizacja · zdjęcia 2015",8:"Projekt · wizualizacja recepcji"}},
- {s:"hotel-haston",x:1,t:"Hotel Haston",w:"",y:"2015",n:5,r:[1.5, 1.5, 1.5, 1.5, 1.5],c:"1/1",k:"hotele"},
+ {s:"hotel-brzeg",t:"Hotel w Brzegu",w:"Brzeg",y:"2015",n:9,r:[1.499,1.309,0.619,1.499,1.499,1.5,1.475,1.499,1.333],c:"1/1",k:"hotele",g:{0:"Realizacja · zdjęcia 2015",8:"Projekt · wizualizacja recepcji"}},
  {s:"hotel-scandic",v:2,t:"Hotel Scandic",w:"",y:"2014",n:12,r:[1.488,1.491,1.512,1.512,1.524,1.403,1.373,1.454,1.5,1.483,1.504,1.513],c:"1/1",k:"hotele"},
+ {s:"hotel-haston",x:1,t:"Hotel Haston",w:"",y:"2015",n:5,r:[1.5, 1.5, 1.5, 1.5, 1.5],c:"1/1",k:"hotele"},
+ {s:"hotel-holiday-inn-express",v:2,t:"Hotel Holiday Inn Express",w:"Wrocław",y:"2020",n:4,r:[1.777,1.777,1.777,1.777],c:"1/1",k:"hotele"},
  {s:"hotel-zoo",x:1,t:"Hotel ZOO",w:"",y:"2018",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
  {s:"hotel-radisson-warszawa",x:1,t:"Hotel Radisson",w:"Warszawa",y:"2015",n:6,r:[1.774, 1.774, 1.774, 1.0, 1.774, 1.774],c:"1/1",k:"hotele"},
  {s:"pensjonat-mrzezyno",x:1,t:"Pensjonat w Mrzeżynie",w:"Mrzeżyno",y:"2021",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
@@ -902,6 +911,7 @@ const PR_ALL=[
  {s:"wnetrze-angel-river",t:"Apartament Angel River",w:"Wrocław",y:"2024",n:15,r:[1.303,1.258,1.333,0.714,0.714,0.676,0.581,0.595,0.687,0.563,0.798,0.564,0.564,0.614,0.563],c:"1/1",k:"wnetrza",
   d:"Apartament wysoko nad Wrocławiem, w budynku Angel River, z widokiem na panoramę miasta. Przez całe mieszkanie prowadzi jasny dąb ułożony w jodełkę francuską, ściany dzielą klasyczne ramy sztukaterii, a płyty o wyrazistym, marmurowym użyleniu budują wyspę kuchenną i łazienki. W strefie dziennej centralne miejsce zajmuje przeszklona winiarnia w czarnych stalowych ramach. Sypialnie otulają tapicerowane wezgłowia na całą ścianę, a mosiężne detale spinają wnętrze w spokojną, elegancką całość. Zdjęcia z realizacji.",
   g:{0:"Strefa dzienna · salon, kuchnia, winiarnia",8:"Strefa nocna · sypialnie i łazienki"}},
+ {s:"wnetrze-januszowicka",v:2,t:"Wnętrze Januszowicka",w:"",y:"",n:13,r:[1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777],c:"1/1",k:"wnetrza"},
  {s:"wnetrze-kuchnia",x:1,t:"Kuchnia z jadalnią",w:"Wrocław, ul. Na Ostatnim Groszu",y:"2026",n:1,r:[1.778],c:"4/5",k:"wnetrza"},
  {s:"dom-clt-kuchnia",x:1,t:"Wnętrze domu z CLT",w:"Czerna",y:"2026",n:1,r:[1.394],c:"1/1",k:"wnetrza"},
  {s:"lazienka-warszawa",x:1,t:"Łazienka",w:"Warszawa",y:"2026",n:1,r:[0.847],c:"4/5",k:"wnetrza"},
@@ -1175,8 +1185,6 @@ function go(d){if(lbBusy||L.length<2||lb.hidden)return;lbBusy=true;let ok=false;
   lbt.addEventListener("transitionend",done);setTimeout(done,750);lbPos(-d*(lbW()+LBG),true)}
 function close(){lb.hidden=true;if(window.lenis&&pv.hidden)lenis.start();last&&last.focus()}
 document.getElementById("lb-close").onclick=close;
-document.getElementById("lb-prev").onclick=()=>go(-1);
-document.getElementById("lb-next").onclick=()=>go(1);
 lb.addEventListener("click",e=>{if(e.target===lb)close()});
 addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
 addEventListener("resize",()=>{if(!lb.hidden&&!lbBusy)lbPos(0,false)});
