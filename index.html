@@ -203,6 +203,10 @@ section{padding-block:88px}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
 .big{font:400 clamp(22px,2.4vw,30px)/1.35 var(--display);max-width:26ch}
 .big em{font-style:normal;color:var(--green)}
+#mp-pracownia .big{max-width:34ch}
+#mp-pracownia em.gr{font-style:normal;color:var(--green);font-weight:500}
+#mp-pracownia .big-sub em.gr{font-weight:600}
+#mp-pracownia .big-sub{font:400 clamp(17px,1.8vw,22px)/1.4 var(--display);max-width:46ch;margin-top:calc(2 * 1.35 * clamp(22px,2.4vw,30px))}
 .studio p+p{margin-top:16px}
 .people{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
 .person{display:grid;gap:4px;padding:18px 12px 0 0}
@@ -281,6 +285,12 @@ footer{padding-block:28px 36px}
 .pv-head>div,.pv-plan>div{padding:18px 16px 0 0}
 .pv-head .mono,.pv-plan .mono,.pv-next .mono{display:block;margin-bottom:10px}
 .pv-head h2{font-size:clamp(28px,3.4vw,46px)}
+.pv-head.br{grid-template-columns:2fr 1.2fr .6fr 1fr .8fr auto}
+.pv-brand{display:block;padding-top:18px;justify-self:end;transition:opacity .3s}
+.pv-brand[hidden]{display:none}
+.pv-brand img{display:block;height:clamp(54px,5.4vw,78px);width:auto}
+.pv-brand:hover{opacity:.7}
+@media (max-width:760px){.pv-head.br{grid-template-columns:1fr 1fr}.pv-brand{justify-self:start}}
 .pv-desc{max-width:64ch;margin-top:32px;color:var(--graphite);font-size:17px;line-height:1.65}
 .pg-h{column-span:all;font:500 11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#6E746F;margin:40px 0 14px;padding-top:12px;border-top:1px solid #DADDD7}
 .pg-h:first-child{margin-top:0}
@@ -290,6 +300,20 @@ footer{padding-block:28px 36px}
 .pg-it img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
 .pg-it:hover img{transform:scale(1.035)}
 .pv-plan[hidden]{display:none}
+.pv-plan-box.has{aspect-ratio:auto;background:none;display:flex;flex-direction:column;gap:36px}
+.pl-it{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.pl-it img{display:block;width:100%;height:auto}
+#pv-pl-t:empty{display:none}
+.pl-info h4{font:400 clamp(20px,1.9vw,26px)/1.2 var(--display);margin:0 0 14px}
+.pl-info .mono{margin-top:34px}
+.pl-tab{width:100%;max-width:440px;border-collapse:collapse;font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums}
+.pl-tab td{padding:5px 0;border-bottom:1px solid #E7EAE5;vertical-align:baseline}
+.pl-tab td.n{width:28px;font:500 12px var(--mono);letter-spacing:.08em;color:#7A817C}
+.pl-tab td.a{text-align:right;white-space:nowrap;padding-left:16px}
+.pl-tab tr.sum td{border-bottom:0;padding-top:10px;font-weight:500}
+.pl-tab tr.hd td{padding-top:22px;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#6E746F;border-bottom:1px solid #C9CEC6}
+.pl-tab tr.hd:first-child td{padding-top:4px}
+.pl-tab tr.hd td.a{text-transform:none;letter-spacing:.04em}
 .pv-plan{display:grid;grid-template-columns:2fr 3fr;margin-top:72px}
 .pv-plan-box{margin-top:18px;aspect-ratio:16/7;background:repeating-linear-gradient(0deg,transparent 0 39px,#E7EAE5 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,#E7EAE5 39px 40px)}
 .pv-next{display:grid;grid-template-columns:2fr 3fr;margin:72px 0 96px;text-decoration:none;color:inherit}
@@ -453,6 +477,13 @@ main .wrap.wmap{margin-top:96px}
 .vlab:hover .t>span{transform:translateX(100%)}
 .vtick{position:absolute;left:0;width:clamp(30px,4.4vw,54px);height:1px;margin-top:-.5px;background:#F2F3F1;opacity:.75;transform-origin:0 50%;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s,height .3s,margin .3s,opacity .3s;pointer-events:none}
 .vlab:hover+.vtick{height:2px;margin-top:-1px;opacity:1;background:#9BDB7F;transform:scaleX(1.25)}
+/* napisy kategorii przy rzędach – powiększone 200% (tak samo we wszystkich galeriach kategorii) */
+.wcols.rows{--vl:clamp(48px,8.8vw,108px);--lw:calc(var(--vl) + 25px)}
+.vlab{font-size:var(--vl)}
+.vtick{width:var(--vl)}
+/* odstępy przy napisach kategorii ×2: od lewej krawędzi 8→16 px, od napisu do zdjęć 25→50 px */
+.wcols.rows{--lw:calc(var(--vl) + 58px)}
+.wrow>.vlab,.wrow>.vtick{left:8px}
 .wk.empty{cursor:default}.wk.empty .wk-ph{background:#4A504C;display:flex;align-items:center;justify-content:center}
 .wk.empty .soon{font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(242,243,241,.6)}
 .works .filters{grid-template-columns:repeat(7,minmax(0,1fr));width:min(1180px,100%)}
@@ -556,6 +587,36 @@ main .wrap.wwide{margin-top:110px}
 .lb .lb-x::after{transform:rotate(-45deg)}
 .lb .lb-x:hover{transform:rotate(90deg);background:rgba(30,33,31,.7)}
 .lb .lb-x:hover::before,.lb .lb-x:hover::after{background:#9BDB7F}
+/* rzuty: białe tło w podglądzie */
+.lb.wh{background:#fff}
+.lb.wh .lb-s{box-sizing:border-box;padding:76px 40px 36px}
+.lb.wh .lbcap{color:#2A2E2B;text-shadow:none;top:calc(28px + env(safe-area-inset-top,0px));bottom:auto}
+.lb.wh .lb-ar{filter:none}
+.lb.wh .lb-ar svg{stroke:#2A2E2B}
+.lb.wh .lb-x{background:rgba(42,46,43,.07)}
+.lb.wh .lb-x::before,.lb.wh .lb-x::after{background:#2A2E2B}
+.lb.wh .lb-x:hover{background:rgba(42,46,43,.14)}
+.lb.wh button{color:#2A2E2B}
+/* PODSTRONA – okładka z ruchem przestrzennym działa jak przeglądarka zdjęć projektu:
+   strzałki po bokach, klik w lewą/prawą połowę, przeciąganie, strzałki klawiatury; pierwsze zdjęcie zachowuje ruch 2,5D */
+.pv-film{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.pv-film.drag{cursor:grabbing}
+.pv-film.one{cursor:default}
+.pf-track{position:absolute;inset:0;display:flex;will-change:transform}
+.pf-track.anim{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.pf-p{position:relative;flex:0 0 100%;height:100%;overflow:hidden}
+.pf-live{position:absolute;inset:0}
+.pf-s{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.pf-s.ct{object-fit:contain}
+.pf-s.z0{transform:scale(1.075)}
+.pf-p.cur .pf-s:not(.z0){animation:kb 18s ease-in-out infinite alternate}
+.pv-film .lb-ar{z-index:3}
+.pv-film:hover .lb-ar{opacity:.45}
+.pv-film.sl .lb-ar.l,.pv-film.sr .lb-ar.r{opacity:1}
+.pv-film.sl .lb-ar.l{transform:translateX(-8px)}.pv-film.sr .lb-ar.r{transform:translateX(8px)}
+.pv-film.one .lb-ar,.pv-film.one .pf-n{display:none}
+.pf-n{position:absolute;z-index:3;right:max(20px,var(--gut-r));bottom:14px;font:500 11px/1 var(--mono);letter-spacing:.16em;color:#F2F3F1;text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 14px rgba(0,0,0,.4);pointer-events:none}
+@media (prefers-reduced-motion:reduce){.pf-p.cur .pf-s{animation:none}}
 #works-t{cursor:pointer;transition:color .3s}#works-t:hover{color:var(--hov)}
 /* METAFORA: zdjęcia w tej samej siatce co tekst nad nimi (lewe pod „relacjami”, prawe pod opisem) */
 .duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
@@ -616,7 +677,7 @@ main .wrap.wwide{margin-top:110px}
     <video id="hv" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg" aria-hidden="true"></video>
     <div class="vgrain" aria-hidden="true"></div><div class="vvign" aria-hidden="true"></div><i class="vscr a" aria-hidden="true"></i><i class="vscr b" aria-hidden="true"></i>
     <div class="wrap vh-in">
-      <span class="mono">Pracownia architektoniczna · Wrocław · jest 2026, zaczynamy nowy rozdział</span>
+      <span class="mono">Pracownia architektoniczna · Wrocław · <b style="color:#9BDB7F;font-weight:600">restart 2026</b></span>
       <h1><em class="pre">Wdzięczni i&nbsp;zafascynowani życiem</em><br>Projektujemy architekturę<br><em>w&nbsp;trosce o&nbsp;życie</em></h1>
       <p class="lead">Dbając o&nbsp;relacje między ludźmi w&nbsp;przestrzeni, projektujemy domy, wnętrza, hotele, budynki mieszkalne i&nbsp;usługowe, scenografie i&nbsp;produkt. Dotykamy krajobrazu, bryły i&nbsp;detalu, optyki&nbsp;i&nbsp;haptyki&nbsp;doświadczenia.</p>
       <div class="ctas">
@@ -663,7 +724,7 @@ main .wrap.wwide{margin-top:110px}
 
   <section id="metafora" class="studio">
     <div class="wrap">
-      <div class="head"><div><span class="mono">Pracownia architektoniczna</span><h2>Metafora</h2></div></div>
+      <div class="head"><div><span class="mono">Pracownia architektoniczna</span><h2>Metafora Architekci</h2></div></div>
       <div class="filters rail mtabs" role="tablist" aria-label="Metafora">
         <button class="chip" role="tab" aria-pressed="true" data-p="pracownia">Pracownia</button>
         <button class="chip" role="tab" aria-pressed="false" data-p="uslugi">Usługi</button>
@@ -673,11 +734,14 @@ main .wrap.wwide{margin-top:110px}
     <div class="mpanel" id="mp-pracownia">
     <div class="wrap two">
       <div>
-        <p class="big">Architektura to przede wszystkim relacje: <em>między ludźmi</em> i&nbsp;między człowiekiem a&nbsp;przestrzenią.</p>
+        <p class="big">Architektura to przede wszystkim&nbsp;relacje:<br><em>relacje między ludźmi</em>,<br>relacje między człowiekiem a&nbsp;przestrzenią.</p>
+        <p class="big-sub">Po naszych 30-letnich doświadczeniach jako samodzielni architekci robimy <em class="gr">restart&nbsp;2026</em> w&nbsp;dojrzale dobranym zespole. Projektujemy dla Ciebie dobrą architekturę.</p>
       </div>
       <div>
-        <p>Do każdego projektu podchodzimy z ciekawością i świeżym spojrzeniem. Zaczynamy od rozmowy o tym, jak chcecie żyć, a dopiero potem rysujemy ściany. Efektem jest przestrzeń czytelna, dopasowana do miejsca i do ludzi, którzy będą z niej korzystać.</p>
-        <p>Projektujemy domy jednorodzinne, wnętrza, obiekty usługowe, hotele i budynki z drewna klejonego krzyżowo (CLT). Z projektantami branżowymi współpracujemy od lat, więc dokumentację dostajecie skoordynowaną i kompletną.</p>
+        <p>Mówi się, że architekturę kupujemy oczami. Tak naprawdę kupujemy jednak dobre samopoczucie – nasze wyobrażenie, jak będziemy się czuć w&nbsp;tej przestrzeni. Bez człowieka, który dobrze się w&nbsp;niej czuje, nawet najpiękniejsza forma traci sens. A&nbsp;człowiek potrzebuje drugiego człowieka.</p>
+        <p>Dlatego projektujemy przede wszystkim domy i&nbsp;wnętrza mieszkalne – tam potrzeby ludzi widać najwyraźniej. To, czego się o&nbsp;Nich uczymy, przenosimy na hotele i&nbsp;obiekty usługowe.</p>
+        <p>W&nbsp;każdym projekcie dbamy o&nbsp;zdrowie użytkownika oraz ekologię Jego środowiska. Kochamy drewno, wierzymy, że jest to jeden z&nbsp;najlepszych materiałów budowlanych. Świadomie specjalizujemy się w&nbsp;projektowaniu głównie w&nbsp;technologii CLT.</p>
+        <p>Wokół siebie mamy dobrych ludzi: przyjaciół, kolegów, sprawdzonych specjalistów. Dzięki temu architekturę możemy Wam nie tylko zaprojektować, ale i&nbsp;zrealizować. <em class="gr">W&nbsp;dobrych relacjach.</em></p>
       </div>
     </div>
     <div class="wrap duo" style="margin-top:0">
@@ -721,7 +785,7 @@ main .wrap.wwide{margin-top:110px}
           <p>Prowadzi pracownię od 1997 roku, od 2005 pod marką Metafora.</p><p class="soon">Historia: wkrótce</p></article>
         <article class="arch"><div class="ph pic"><img loading="lazy" src="img/team-klementyna.jpg" alt="Klementyna Kopczyńska-Kłopocka"></div><h3>arch. Klementyna Kopczyńska-Kłopocka</h3><span class="role">współzałożycielka, dyrektor artystyczna</span>
           <p class="soon">Historia: wkrótce</p></article>
-        <article class="arch"><div class="ph pic"><img loading="lazy" src="img/team-patryk.jpg" alt="Patryk Filis"></div><h3>Patryk Filis</h3><span class="role">w zespole Metafory</span>
+        <article class="arch"><div class="ph pic"><img loading="lazy" src="img/team-patryk.jpg" alt="Patryk Filis"></div><h3>arch. Patryk Filis</h3><span class="role">w zespole Metafory</span>
           <p class="soon">Historia: wkrótce</p></article>
         <article class="arch"><div class="ph pic"><img loading="lazy" src="img/team-hania.jpg" alt="Hania Kłopocka"></div><h3>Hania Kłopocka</h3><span class="role">scenografka</span>
           <p>Projektuje przestrzeń dla teatru. Jej prace znajdziesz w&nbsp;kategorii Scena.</p></article>
@@ -817,10 +881,11 @@ main .wrap.wwide{margin-top:110px}
     <button class="pv-x" type="button" aria-label="Zamknij projekt"></button>
   </div>
   <div class="pv-scroll" data-lenis-prevent>
-    <div class="pv-film">
-      <canvas id="pv-cv" aria-hidden="true"></canvas>
-      <img id="pv-fb" class="pv-fb" alt="">
+    <div class="pv-film" id="pv-film">
+      <div class="pf-track" id="pf-track"><div class="pf-p"></div><div class="pf-p cur"><div class="pf-live" id="pf-live"><canvas id="pv-cv" aria-hidden="true"></canvas><img id="pv-fb" class="pv-fb" alt=""></div></div><div class="pf-p"></div></div>
       <div class="fog" aria-hidden="true"></div>
+      <i class="lb-ar l"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="9,1 1,9 9,17"/></svg></i><i class="lb-ar r"><svg viewBox="0 0 56 18" aria-hidden="true"><line x1="1" y1="9" x2="55" y2="9"/><polyline points="47,1 55,9 47,17"/></svg></i>
+      <span class="pf-n" id="pf-n" aria-live="polite"></span>
     </div>
     <div class="wrap">
       <div class="pv-head rail">
@@ -828,15 +893,16 @@ main .wrap.wwide{margin-top:110px}
         <div><span class="mono">Miejsce</span><p id="pv-w"></p></div>
         <div><span class="mono">Rok</span><p id="pv-y"></p></div>
         <div><span class="mono">Typ</span><p id="pv-k"></p></div>
-        <div><span class="mono">Wizualizacje</span><p id="pv-n"></p></div>
+        <div><span class="mono">Ryc.</span><p id="pv-n"></p></div>
+        <a class="pv-brand" id="pv-brand" href="woodgood.html" hidden aria-label="WoodGood – strona marki"><img src="img/logo-woodgood.png" width="900" height="625" alt="WoodGood"></a>
       </div>
       <p class="pv-desc" id="pv-d" hidden></p>
     </div>
     <div class="pv-gal" id="pv-gal"></div>
     <div class="wrap">
       <div class="pv-plan rail" id="pv-plan">
-        <div><span class="mono">Rzut funkcjonalny</span><p>Rzut dodamy wkrótce.</p></div>
-        <div class="pv-plan-box" aria-hidden="true"></div>
+        <div><span class="mono">Rzut funkcjonalny</span><div id="pv-pl-t" class="pl-info"></div></div>
+        <div class="pv-plan-box" id="pv-pl"></div>
       </div>
       <a class="pv-next rail" id="pv-next" href="#"><div><span class="mono">Następny projekt</span><b></b></div><span class="pv-next-ph"><img alt="" loading="lazy"></span></a>
     </div>
@@ -855,21 +921,22 @@ main .wrap.wwide{margin-top:110px}
 <script>
 /* x:1 = projekt wypięty ze strony (jeszcze nieopracowany); usunięcie x:1 przywraca go */
 const PR_ALL=[
- {s:"dom-anik-pod-sleza",t:"Dom pod Ślężą",w:"gmina Kobierzyce",y:"2025",n:9,r:[1.777, 1.777, 1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.776],c:"4/5",k:"domy"},
+ {s:"dom-anik-pod-sleza",t:"Dom pod Ślężą",w:"gmina Kobierzyce",y:"2025",n:11,r:[1.777, 1.777, 1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.776, 1.492, 1.649],c:"4/5",k:"domy",v:5,pl:[10, 11],ph:"Rzuty kondygnacji",pr:[["","Parter","388,4 m²"],["","Piętro","298,8 m²"]],pu:"687,3 m²"},
+ {s:"dom-woodgood-d1",b:"wg",ty:"Dom modułowy rekreacyjny",tk:"dom rekreacyjny",t:"WoodGood MD1 – dom modułowy",w:"",y:"2025",v:7,n:8,pl:[7,8],ph:"Rzut parteru",pu:"38,53 m²",r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 2.507, 1.414],c:"4/5",k:"domy",d:"Pierwszy modułowy dom WoodGood (Good House I-0412) – prosta bryła z dwuspadowym dachem i cofniętym szczytem w drewnianej ramie, konstrukcja CLT, 38,5 m² powierzchni użytkowej (ok. 48 m² zabudowy). Moduł bazowy systemu WoodGood Family: dołączane łącznikami moduły tworzą domy o różnej wielkości i układzie."},
  {s:"dom-k2-wierzbice",x:1,t:"Dom K2",w:"Wierzbice",y:"2024",n:9,r:[1.777, 1.776, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
  {s:"dom-chwalowice",t:"Dom w Chwałowicach",w:"",y:"2020",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
- {s:"dom-grottgera-wroclaw",t:"Dom przy Grottgera",w:"Wrocław",y:"2011",n:4,r:[1.333, 1.333, 1.333, 1.333],c:"3/2",k:"domy"},
+ {s:"dom-grottgera-wroclaw",t:"Dom przy Grottgera",w:"Wrocław",y:"2011",n:7,r:[1.333, 1.333, 1.333, 1.333, 1.148, 1.14, 1.129],c:"3/2",k:"domy",v:4,pl:[5, 6, 7],ph:"Rzuty kondygnacji",pr:[["","Parter","186,9 m²"],["","Piętro","162,3 m²"],["","Piętro 2","87,0 m²"]],pu:"436,2 m²"},
  {s:"dom-wilczyce-r",t:"Dom w Wilczycach",w:"",n:8,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.779, 1.777, 1.784],c:"4/5",k:"domy"},
- {s:"dom-w-trzcinsku",t:"Dom w Trzcińsku",w:"Rudawy Janowickie",y:"2024",n:11,r:[1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"5/4",k:"domy"},
+ {s:"dom-w-trzcinsku",t:"Dom w Trzcińsku",w:"Rudawy Janowickie",y:"2024",n:12,r:[1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.078],c:"5/4",k:"domy",v:4,pl:[12],ph:"Rzut parteru",pu:"121,8 m²"},
  {s:"dom-h010-mrozow",t:"Dom w Mrozowie",w:"gmina Miękinia",y:"ok. 2019",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
  {s:"dom-k7",t:"Dom K7",w:"",y:"2010",n:8,r:[0.653, 1.5, 1.5, 0.667, 1.5, 1.375, 1.393, 0.667],c:"1/1",k:"domy"},
  {s:"dom-k8",t:"Dom K8",w:"",y:"2006",n:5,r:[1.777, 1.777, 1.779, 1.777, 1.777],c:"4/5",k:"domy"},
  {s:"dom-kudowa-zdroj",t:"Dom w Kudowie",w:"Kudowa-Zdrój",y:"2014",n:7,r:[1.424, 1.427, 1.5, 1.427, 1.343, 1.549, 1.163],c:"4/5",k:"domy"},
  {s:"dom-bialy-kosciol",t:"Dom w Białym Kościele",w:"",y:"2022",n:3,r:[1.777, 1.777, 1.777],c:"3/2",k:"domy"},
- {s:"dom-clt-probono-czerna",t:"Dom z CLT w Czernej",w:"",y:"2026",n:7,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"3/2",k:"domy"},
+ {s:"dom-clt-probono-czerna",t:"Dom z CLT w Czernej",w:"",y:"2026",n:8,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.006],c:"3/2",k:"domy",v:4,pl:[8],ph:"Rzut parteru",pu:"128,5 m²"},
  {s:"dom-w-trzcinsku-2",x:1,t:"Dom w Trzcińsku II",w:"Rudawy Janowickie",y:"2026",n:9,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
  {s:"dom-mati-z-pergola",x:1,t:"Dom z pergolą",w:"",y:"2024",n:4,r:[1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
- {s:"dom-ostrow-p",x:1,t:"Dom w Ostrowie",w:"",y:"2019",n:7,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
+ {s:"dom-ostrow-p",v:2,t:"Dom w Ostrowie",w:"",y:"2019",n:8,r:[1.5,1.777,1.777,1.777,1.777,1.777,1.777,1.777],c:"1/1",k:"domy"},
  {s:"dom-czernica",x:1,t:"Dom w Czernicy",w:"gmina Czernica",y:"2007",n:4,r:[1.621, 1.621, 1.621, 1.621],c:"4/5",k:"domy"},
  {s:"dom-k6",x:1,t:"Dom K6",w:"",y:"2007",n:4,r:[3.0, 1.707, 1.895, 1.707],c:"5/4",k:"domy"},
  {s:"dom-z-carportem-ladecka",x:1,t:"Dom z carportem",w:"ul. Lądecka",y:"2026",n:3,r:[1.25, 1.25, 1.777],c:"4/5",k:"domy"},
@@ -912,6 +979,8 @@ const PR_ALL=[
   d:"Apartament wysoko nad Wrocławiem, w budynku Angel River, z widokiem na panoramę miasta. Przez całe mieszkanie prowadzi jasny dąb ułożony w jodełkę francuską, ściany dzielą klasyczne ramy sztukaterii, a płyty o wyrazistym, marmurowym użyleniu budują wyspę kuchenną i łazienki. W strefie dziennej centralne miejsce zajmuje przeszklona winiarnia w czarnych stalowych ramach. Sypialnie otulają tapicerowane wezgłowia na całą ścianę, a mosiężne detale spinają wnętrze w spokojną, elegancką całość. Zdjęcia z realizacji.",
   g:{0:"Strefa dzienna · salon, kuchnia, winiarnia",8:"Strefa nocna · sypialnie i łazienki"}},
  {s:"wnetrze-januszowicka",v:2,t:"Wnętrze Januszowicka",w:"",y:"",n:13,r:[1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777,1.777],c:"1/1",k:"wnetrza"},
+ {s:"wnetrze-wroclaw-rydygiera",v:1,t:"Mieszkanie przy Rydygiera",w:"Wrocław, ul. Rydygiera",y:"2015",n:9,r:[1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,0.75],c:"1/1",k:"wnetrza",
+  d:"Mieszkanie we Wrocławiu z otwartą strefą dzienną: salon, jadalnia i kuchnia tworzą jedną przestrzeń, którą porządkują dwa mocne elementy – słup obłożony drewnianymi kostkami z przekrojów pni i ściana z szarej mozaiki. Biała kuchnia z betonowym fartuchem i czarną ścianą-tablicą, dębowa podłoga, skórzana sofa w kolorze karmelu i lampy na wysięgnikach. Strefę snu oddziela niska ścianka z telewizorem, łazienka utrzymana jest w szarych płytach o fakturze betonu."},
  {s:"wnetrze-kuchnia",x:1,t:"Kuchnia z jadalnią",w:"Wrocław, ul. Na Ostatnim Groszu",y:"2026",n:1,r:[1.778],c:"4/5",k:"wnetrza"},
  {s:"dom-clt-kuchnia",x:1,t:"Wnętrze domu z CLT",w:"Czerna",y:"2026",n:1,r:[1.394],c:"1/1",k:"wnetrza"},
  {s:"lazienka-warszawa",x:1,t:"Łazienka",w:"Warszawa",y:"2026",n:1,r:[0.847],c:"4/5",k:"wnetrza"},
@@ -951,7 +1020,15 @@ function catReset(row){[...row.children].forEach(x=>{x.classList.remove("on");x.
 grid.addEventListener("pointerover",e=>{if(e.pointerType&&e.pointerType!=="mouse")return;const b=e.target.closest(".wrow-s .wk");if(b&&!b.classList.contains("on"))catGrow(b)});
 grid.addEventListener("pointerout",e=>{const row=e.target.closest(".wrow-s");if(row&&!(e.relatedTarget&&row.contains(e.relatedTarget)))catReset(row)});
 /* napis kategorii stoi na linii dołu pierwszego zdjęcia w rzędzie */
-function placeLabels(){setPvw();grid.querySelectorAll(".wrow>.vlab").forEach(v=>{const r=v.parentElement,ph=r.querySelector(".wk-ph");if(ph){const wk=ph.parentElement;v.style.bottom=(r.clientHeight-(wk.offsetTop+ph.offsetTop+ph.offsetHeight))+"px";
+/* napisy kategorii: jedna wielkość we wszystkich rzędach – dobrana tak, żeby najdłuższa nazwa zmieściła się w swoim rzędzie
+   (skala z przeglądu wszystkich kategorii zapamiętana, żeby po rozwinięciu kategorii napis miał tę samą wielkość) */
+let VLS=1;
+function fitLabels(){const L=[...grid.querySelectorAll(".wrow>.vlab")];if(!L.length)return;
+  grid.style.removeProperty("--vl");const base=parseFloat(getComputedStyle(L[0]).fontSize);let fs=base;
+  const need=()=>{let k=1;L.forEach(v=>{const r=v.parentElement,ph=r.querySelector(".wk-ph");if(!ph)return;const wk=ph.parentElement,av=wk.offsetTop+ph.offsetTop+ph.offsetHeight-6,h=v.offsetHeight;if(h>av&&av>40)k=Math.min(k,av/h)});return k};
+  for(let n=0;n<3;n++){const k=need();if(k>=1)break;fs=Math.max(24,fs*k);grid.style.setProperty("--vl",fs.toFixed(1)+"px")}
+  if(L.length>1)VLS=fs/base;else if(fs/base>VLS){fs=base*VLS;grid.style.setProperty("--vl",fs.toFixed(1)+"px")}}
+function placeLabels(){setPvw();fitLabels();grid.querySelectorAll(".wrow>.vlab").forEach(v=>{const r=v.parentElement,ph=r.querySelector(".wk-ph");if(ph){const wk=ph.parentElement;v.style.bottom=(r.clientHeight-(wk.offsetTop+ph.offsetTop+ph.offsetHeight))+"px";
     const t=v.nextElementSibling,ln=wk.querySelector(".wk-cap i");if(t&&ln){const lh=parseFloat(getComputedStyle(ln).lineHeight)||ln.offsetHeight;t.style.top=(wk.offsetTop+ln.offsetTop+lh/2)+"px"}}})}
 document.fonts&&document.fonts.ready.then(()=>placeLabels());
 function rowsHTML(F){
@@ -964,7 +1041,7 @@ function rowsHTML(F){
   const lab=k=>`<span class="vlab" data-f="${k}" role="button" tabindex="0" aria-label="${curF===k?"Wróć do przeglądu kategorii":"Rozwiń galerię: "+catName(k)}"><span class="t"><span>${catName(k)}</span><span aria-hidden="true">${catName(k)}</span></span></span><i class="vtick" aria-hidden="true"></i>`;
   const tile=(p,w,r,pat,first,k)=>{const i=PR.indexOf(p);return `<a class="wk" href="#projekt/${p.s}" data-s="${p.s}" aria-label="Projekt: ${p.t}" style="width:calc(${w}% - ${(8*(pat.length-1)/pat.length).toFixed(2)}px)">
     <span class="wk-ph" style="aspect-ratio:${r}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt="Wizualizacja: ${p.t}"></span>
-    <span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></span><span class="mono">${pad(i+1)}</span></span></a>`};
+    <span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||p.tk||(p.ty?p.ty.toLowerCase():KN[p.k]),p.y].filter(Boolean).join(" · ")}</i></span><span class="mono">${pad(i+1)}</span></span></a>`};
   const empty=k=>`<div class="wk empty" style="width:${n===1?100:46}%"><span class="wk-ph" style="aspect-ratio:3/2"><span class="soon">${catName(k)} · wkrótce</span></span><span class="wk-cap"><span><b>${catName(k)}</b><i>projekty w przygotowaniu</i></span></span></div>`;
   let ri=0;
   const rowsOf=(L,k,max)=>{let row=[];const out=[];
@@ -980,10 +1057,10 @@ function rowsHTML(F){
     const per=n===3?9:(n===2?6:3),sm=rest.slice(0,per*CAT_SROWS),arch=rest.slice(per*CAT_SROWS);
     const rnd=q=>{const x=Math.sin(q*12.9898+3.7)*43758.5453;return x-Math.floor(x)},SA=[1.25,1,1.5,.8,1.333,1.6];
     const stile=p=>{const i=PR.indexOf(p),a=SA[(i*5+2)%SA.length],g=(a*(.62+.38*rnd(i+3))).toFixed(4);
-      return `<a class="wk wk-s" href="#projekt/${p.s}" data-s="${p.s}" data-a="${a}" data-r="${g}" style="flex-grow:${g}" aria-label="Projekt: ${p.t}"><span class="wk-ph" style="aspect-ratio:${a}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt="Projekt: ${p.t}"></span><span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></span></span></a>`};
+      return `<a class="wk wk-s" href="#projekt/${p.s}" data-s="${p.s}" data-a="${a}" data-r="${g}" style="flex-grow:${g}" aria-label="Projekt: ${p.t}"><span class="wk-ph" style="aspect-ratio:${a}"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt="Projekt: ${p.t}"></span><span class="wk-cap"><span><b>${p.t}</b><i>${[p.w||p.tk||(p.ty?p.ty.toLowerCase():KN[p.k]),p.y].filter(Boolean).join(" · ")}</i></span></span></a>`};
     for(let i=0;i<sm.length;i+=per){const R=sm.slice(i,i+per),miss=per-R.length,fg=(miss*1.1).toFixed(3);
       out.push(`<div class="wrow-s" data-k="${k}">${R.map(stile).join("")}${miss?`<i class="pg-fill" data-r="${fg}" style="flex-grow:${fg}"></i>`:""}</div>`)}
-    if(arch.length)out.push(`<div class="warch" data-k="${k}"><div class="warch-h"><span class="mono">Archiwa</span><span class="mono">${arch.length}</span></div><div class="warch-l">${[arch.slice(0,Math.ceil(arch.length/2)),arch.slice(Math.ceil(arch.length/2))].map(C=>`<div class="wa-c">${C.map(p=>`<a class="wa" href="#projekt/${p.s}" data-s="${p.s}"><span class="wa-n"><b>${p.t}</b><span class="wa-pv" aria-hidden="true"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt=""></span></span><i>${[p.w||KN[p.k],p.y].filter(Boolean).join(" · ")}</i></a>`).join("")}</div>`).join("")}</div></div>`);
+    if(arch.length)out.push(`<div class="warch" data-k="${k}"><div class="warch-h"><span class="mono">Archiwa</span><span class="mono">${arch.length}</span></div><div class="warch-l">${[arch.slice(0,Math.ceil(arch.length/2)),arch.slice(Math.ceil(arch.length/2))].map(C=>`<div class="wa-c">${C.map(p=>`<a class="wa" href="#projekt/${p.s}" data-s="${p.s}"><span class="wa-n"><b>${p.t}</b><span class="wa-pv" aria-hidden="true"><img loading="lazy" decoding="async" src="p/${p.s}/t.jpg${p.v?"?v="+p.v:""}" alt=""></span></span><i>${[p.w||p.tk||(p.ty?p.ty.toLowerCase():KN[p.k]),p.y].filter(Boolean).join(" · ")}</i></a>`).join("")}</div>`).join("")}</div></div>`);
     return out}
   return C.join("");
 }
@@ -1178,7 +1255,7 @@ const lbW=()=>lbs.clientWidth;
 function lbPos(dx,anim){lbt.classList.toggle("anim",!!anim);lbt.style.transform=`translateX(${-(lbW()+LBG)+dx}px)`}
 function lbFill(){const n=L.length;[-1,0,1].forEach((d,j)=>{const m=L[((cur+d)%n+n)%n];if(lbS[j].getAttribute("src")!==m.src)lbS[j].src=m.src;lbS[j].alt=d?"":m.cap});
   lbc.textContent=L[cur].cap;lb.classList.toggle("one",n<2);lbPos(0,false)}
-function open(list,i){if(list)L=list;cur=((i%L.length)+L.length)%L.length;lb.hidden=false;lbFill();window.lenis&&lenis.stop();
+function open(list,i){if(list)L=list;cur=((i%L.length)+L.length)%L.length;lb.classList.toggle("wh",!!(L[0]&&L[0].plan));lb.hidden=false;lbFill();window.lenis&&lenis.stop();
   lbs.classList.remove("hint");void lbs.offsetWidth;if(L.length>1)lbs.classList.add("hint");document.getElementById("lb-close").focus()}
 function go(d){if(lbBusy||L.length<2||lb.hidden)return;lbBusy=true;let ok=false;
   const done=()=>{if(ok)return;ok=true;lbt.removeEventListener("transitionend",done);cur=((cur+d)%L.length+L.length)%L.length;lbFill();lbBusy=false};
@@ -1186,7 +1263,7 @@ function go(d){if(lbBusy||L.length<2||lb.hidden)return;lbBusy=true;let ok=false;
 function close(){lb.hidden=true;if(window.lenis&&pv.hidden)lenis.start();last&&last.focus()}
 document.getElementById("lb-close").onclick=close;
 lb.addEventListener("click",e=>{if(e.target===lb)close()});
-addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
+addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape"){close();e.stopImmediatePropagation();return}if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)});
 addEventListener("resize",()=>{if(!lb.hidden&&!lbBusy)lbPos(0,false)});
 (()=>{let drag=false,px=0,dx=0,t0=0,pid=null;
   const side=x=>{const r=lbs.getBoundingClientRect();return x<r.left+r.width/2?-1:1};
@@ -1213,18 +1290,26 @@ function fillProject(i){
   document.getElementById("pv-t").textContent=p.t;
   pvCats(p);
   document.getElementById("pv-w").textContent=p.w;document.getElementById("pv-w").parentElement.hidden=!p.w;
-  document.getElementById("pv-n").textContent=p.n;document.getElementById("pv-y").textContent=p.y||"";document.getElementById("pv-y").parentElement.hidden=!p.y;{const sc=p.k==="scena";document.getElementById("pv-w").previousElementSibling.textContent=sc?"Opis":"Miejsce";document.getElementById("pv-n").previousElementSibling.textContent=(sc||p.g)?"Kadry":"Wizualizacje";}
+  document.getElementById("pv-n").textContent=p.n-(p.pl?p.pl.length:0);document.getElementById("pv-y").textContent=p.y||"";document.getElementById("pv-y").parentElement.hidden=!p.y;{const sc=p.k==="scena";document.getElementById("pv-w").previousElementSibling.textContent=sc?"Opis":"Miejsce";document.getElementById("pv-n").previousElementSibling.textContent="Ryc.";}
   {const d=document.getElementById("pv-d");d.textContent=p.d||"";d.hidden=!p.d;}
-  document.getElementById("pv-k").textContent=({domy:"Dom jednorodzinny",mieszkaniowe:"Zabudowa mieszkaniowa",hotele:"Hotel",komercyjne:"Obiekt komercyjny",wnetrza:"Wnętrze",design:"Design",scena:"Scenografia"})[p.k];
-  document.getElementById("pv-plan").hidden=p.k!=="domy";
+  document.getElementById("pv-k").textContent=p.ty||({domy:"Dom jednorodzinny",mieszkaniowe:"Zabudowa mieszkaniowa",hotele:"Hotel",komercyjne:"Obiekt komercyjny",wnetrza:"Wnętrze",design:"Design",scena:"Scenografia"})[p.k];
+  {const wg=p.b==="wg";document.getElementById("pv-brand").hidden=!wg;document.querySelector("#pv .pv-head").classList.toggle("br",wg);}
+  const PLS=new Set(p.pl||[]),vq=p.v?"?v="+p.v:"";
+  {const pi=(p.pl||[]).map(n=>({src:`p/${p.s}/${pad(n)}.jpg${vq}`,cap:`${p.t} · Rzut funkcjonalny`,r:p.r[n-1],plan:1})),pb=document.getElementById("pv-pl");
+   document.getElementById("pv-plan").hidden=!pi.length;pb.classList.toggle("has",pi.length>0);
+   const es=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+   document.getElementById("pv-pl-t").innerHTML=(p.ph?`<h4>${es(p.ph)}</h4>`:"")+((p.pr||p.pu)?`<table class="pl-tab">${(p.pr||[]).map(r=>r.length<3?`<tr class="hd"><td colspan="2">${es(r[0])}</td><td class="a">${es(r[1]||"")}</td></tr>`:`<tr><td class="n">${es(r[0])}</td><td>${es(r[1])}</td><td class="a">${es(r[2])}</td></tr>`).join("")}${p.pu?`<tr class="sum"><td></td><td>Powierzchnia użytkowa</td><td class="a">${es(p.pu)}</td></tr>`:""}</table>`:"")+(p.pdb?`<span class="mono">Dane podstawowe</span><table class="pl-tab">${p.pdb.map(r=>`<tr><td>${es(r[0])}</td><td class="a">${es(r[1])}</td></tr>`).join("")}</table>`:"");
+   pb.innerHTML=pi.map((m,k)=>`<button type="button" class="pl-it" data-k="${k}" aria-label="Powiększ rzut ${k+1}"><img loading="lazy" src="${m.src}" alt="Rzut funkcjonalny: ${p.t}"></button>`).join("");
+   pb.onclick=e=>{const b=e.target.closest(".pl-it");if(b){last=b;open(pi,+b.dataset.k)}};}
   document.getElementById("pv-c").textContent=`${pad(i+1)} / ${pad(PR.length)}`;
-  let grp="";const imgs=Array.from({length:p.n},(_,k)=>{if(p.g&&p.g[k])grp=p.g[k];return {src:`p/${p.s}/${pad(k+1)}.jpg${p.v?"?v="+p.v:""}`,cap:`${p.t}${grp?" · "+grp:""} · ${pad(k+1)} / ${pad(p.n)}`,r:p.r[k]}});
+  const NG=p.n-PLS.size;let grp="";const imgs=Array.from({length:p.n},(_,k)=>k).filter(k=>!PLS.has(k+1)).map((k,q)=>{if(p.g&&p.g[k])grp=p.g[k];return {src:`p/${p.s}/${pad(k+1)}.jpg${vq}`,cap:`${p.t}${grp?" · "+grp:""} · ${pad(q+1)} / ${pad(NG)}`,r:p.r[k]}});
   pvGal._p=p;pvGal._imgs=imgs;galRender();
   pvGal.onclick=e=>{const b=e.target.closest(".pg-it");if(b){last=b;open(imgs,+b.dataset.k)}};
   const nx=PR[(i+1)%PR.length];const nl=document.getElementById("pv-next");
   nl.href=`#projekt/${nx.s}`;nl.querySelector("b").textContent=nx.t;nl.querySelector("img").src=`p/${nx.s}/01.jpg${nx.v?"?v="+nx.v:""}`;
   pvs.scrollTop=0;
   Film.load(`p/${p.s}/01.jpg${p.v?"?v="+p.v:""}`,`p/${p.s}/depth.png${p.v?"?v="+p.v:""}`);
+  PF.set(imgs);
 }
 /* galeria projektu: do 12 dużych zdjęć w rzędach po 3 (komputer), reszta w małych rzędach po 9.
    Zdjęcia nie są kadrowane; w każdym rzędzie mają różne wysokości i wspólną linię dołu, więc górne krawędzie skaczą. */
@@ -1355,8 +1440,51 @@ const Film=(()=>{
     a.onload=go;d.onload=go;a.onerror=d.onerror=()=>{};a.src=src;d.src=dsrc;
   }
   function stop(){cancelAnimationFrame(raf);raf=0}
-  addEventListener("resize",()=>{if(ready&&!pv.hidden)size()});
-  return {load,stop};
+  function resume(){if(!gl||!ready||raf||!cv.isConnected)return;size();raf=requestAnimationFrame(frame)}
+  addEventListener("resize",()=>{if(ready&&!pv.hidden&&cv.isConnected)size()});
+  return {load,stop,resume};
+})();
+/* okładka projektu jako przeglądarka: taśma z trzema polami (poprzednie / bieżące / następne);
+   pole ze zdjęciem nr 1 dostaje „żywy” obraz 2,5D, pozostałe zwykłe zdjęcia z delikatnym najazdem */
+const PF=(()=>{
+  const film=document.getElementById("pv-film"),tr=document.getElementById("pf-track"),P=[...tr.children],live=document.getElementById("pf-live"),num=document.getElementById("pf-n");
+  let L=[],cur=0,busy=false;
+  const W=()=>film.clientWidth,n=()=>L.length,ix=d=>((cur+d)%n()+n())%n();
+  function pos(dx,anim){tr.classList.toggle("anim",!!anim);tr.style.transform=`translateX(calc(${dx}px - 100%))`}
+  function put(el,k,center){
+    el.classList.toggle("cur",center);
+    if(k===0&&center){if(live.parentElement!==el)el.replaceChildren(live);return}
+    let im=el.firstElementChild;
+    if(!im||im===live){im=document.createElement("img");im.className="pf-s";im.alt="";im.draggable=false;el.replaceChildren(im)}
+    const m=L[k];if(im.getAttribute("src")!==m.src)im.src=m.src;
+    im.alt=center?m.cap:"";im.classList.toggle("ct",m.r<1.25);im.classList.toggle("z0",k===0)}
+  function fill(){if(!n())return;
+    put(P[1],cur,true);put(P[0],ix(-1),false);put(P[2],ix(1),false);
+    num.textContent=`${pad(cur+1)} / ${pad(n())}`;film.classList.toggle("one",n()<2);
+    if(cur===0)Film.resume();else Film.stop();
+    pos(0,false)}
+  function set(list){L=list;cur=0;busy=false;fill()}
+  function go(d){if(busy||n()<2||pv.hidden)return;busy=true;let ok=false;
+    const done=()=>{if(ok)return;ok=true;tr.removeEventListener("transitionend",done);cur=ix(d);fill();busy=false};
+    tr.addEventListener("transitionend",done);setTimeout(done,800);pos(-d*W(),true)}
+  let drag=false,px=0,py=0,dx=0,t0=0,pid=null,moved=false;
+  const side=x=>{const r=film.getBoundingClientRect();return x<r.left+r.width/2?-1:1};
+  film.addEventListener("pointerdown",e=>{if(busy||e.button>0||n()<2)return;drag=true;moved=false;px=e.clientX;py=e.clientY;dx=0;t0=performance.now();pid=e.pointerId});
+  film.addEventListener("pointermove",e=>{
+    if(!drag){if(e.pointerType==="mouse"){const s=side(e.clientX);film.classList.toggle("sl",s<0);film.classList.toggle("sr",s>0)}return}
+    dx=e.clientX-px;
+    if(!moved&&Math.abs(dx)>8&&Math.abs(dx)>Math.abs(e.clientY-py)){moved=true;try{film.setPointerCapture(pid)}catch(_){}film.classList.add("drag")}
+    if(moved){pos(dx,false);film.classList.toggle("sl",dx>0);film.classList.toggle("sr",dx<0)}});
+  const end=e=>{if(!drag)return;drag=false;film.classList.remove("drag");try{film.releasePointerCapture(pid)}catch(_){}
+    if(!moved){if(e.type==="pointerup"&&Math.abs(e.clientY-py)<8)go(side(e.clientX));return}
+    const v=Math.abs(dx)/Math.max(1,performance.now()-t0);
+    if(Math.abs(dx)>W()*.16||v>.55)go(dx<0?1:-1);else pos(0,true)};
+  film.addEventListener("pointerup",end);film.addEventListener("pointercancel",e=>{if(drag&&moved)pos(0,true);drag=false;film.classList.remove("drag")});
+  film.addEventListener("pointerleave",()=>{if(!drag)film.classList.remove("sl","sr")});
+  addEventListener("keydown",e=>{if(pv.hidden||!lb.hidden||n()<2)return;const t=e.target;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;
+    if(e.key==="ArrowRight"){e.preventDefault();go(1)}if(e.key==="ArrowLeft"){e.preventDefault();go(-1)}});
+  addEventListener("resize",()=>{if(!busy&&n())pos(0,false)});
+  return {set};
 })();
 route();
 /* film + nagłówek */
