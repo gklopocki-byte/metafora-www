@@ -9,8 +9,8 @@ $tel   = $clean($_POST['tel'] ?? '', 40);
 $place = $clean($_POST['place'] ?? '', 80);
 $mail  = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
 $msg   = mb_substr(trim(strip_tags((string)($_POST['msg'] ?? ''))), 0, 5000);
-if (!$name || !$mail || mb_strlen($msg) < 3 || empty($_POST['zgoda'])) { http_response_code(400); echo '{"ok":false,"err":"dane"}'; exit; }
-$to = 'gklopocki@me.com';
+if (!$name || !$mail || mb_strlen($msg) < 3) { http_response_code(400); echo '{"ok":false,"err":"dane"}'; exit; }
+$to = 'biuro@metaforaarchitekci.pl';
 $subject = '=?UTF-8?B?' . base64_encode('Strona www – zapytanie (' . ($place ?: 'kontakt') . ')') . '?=';
 $body = "Miejsce: $place\nImię i nazwisko: $name\nE-mail: $mail\nTelefon: $tel\n\n$msg\n";
 $headers = "From: Strona Metafora <no-reply@metaforaarchitekci.pl>\r\nReply-To: $mail\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n";
