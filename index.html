@@ -549,8 +549,8 @@ main .wrap.wmap{margin-top:96px}
 .arch-sub{margin:88px 0 26px}
 .arch-sub .mono{display:block;margin-bottom:12px}
 .arch-sub-h{font:400 clamp(26px,2.8vw,40px)/1.1 var(--display)}
-.arch-grid-2{grid-template-columns:repeat(7,minmax(0,1fr))}
-.arch-grid-2 .arch h3{font-size:16px}.arch-grid-2 .arch .role{font-size:13px}
+.arch-grid.arch-grid-2{grid-template-columns:repeat(7,minmax(0,1fr))}
+.arch-grid-2 .arch h3{font-size:16px}.arch-grid-2 .arch{text-align:right}.arch-grid-2 .arch .role{font-size:13px}
 .arch-grid-2 .ph.pic img{object-position:100% 50%}
 @media (max-width:1000px){.arch-grid.arch-grid-2{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.arch-grid.arch-grid-2{grid-template-columns:1fr 1fr}}
@@ -800,10 +800,10 @@ a.v{text-decoration:none}a.v:hover{color:var(--hov)}
 /* KURSOR: kółko przyciągane do najbliższego klikalnego elementu (tylko mysz, bez ograniczenia ruchu) */
 .mc,.mc *{cursor:none!important}
 .mc input,.mc textarea,.mc select{cursor:text!important}
-.mcur,.mdot{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;mix-blend-mode:difference}
-.mcur{width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid #fff;border-radius:999px;transition:opacity .25s,background-color .3s;will-change:transform,width,height}
-.mcur.big{background:rgba(255,255,255,.12)}
-.mdot{width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff;transition:opacity .2s}
+.mcur,.mdot{position:fixed;left:0;top:0;z-index:9999;pointer-events:none}
+.mcur{width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(155,219,127,.26);border:1.5px solid rgba(110,190,80,.9);box-shadow:0 0 0 1px rgba(27,30,28,.06);transition:opacity .25s,background-color .35s;will-change:transform}
+.mcur.snap{background:rgba(155,219,127,.38)}
+.mdot{width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff;mix-blend-mode:difference;transition:opacity .2s}
 .mcur.off,.mdot.off{opacity:0}
 </style>
 
@@ -976,7 +976,7 @@ a.v{text-decoration:none}a.v:hover{color:var(--hov)}
         <article class="arch"><div class="ph pic"><img loading="lazy" src="img/branza-puzanowski.jpg" alt="Tomasz Puzanowski"></div><h3>inż. Tomasz Puzanowski</h3><span class="role">instalacje sanitarne</span></article>
         <article class="arch"><div class="ph pic"><img loading="lazy" src="img/branza-nejman.jpg?v=6" alt="Marcin Nejman"></div><h3>inż. Marcin Nejman</h3><span class="role">instalacje elektryczne i teletechniczne</span></article>
         <article class="arch"><div class="ph pic"><img loading="lazy" src="img/branza-majda.jpg?v=4" alt="Mirosław Majda"></div><h3>inż. Mirosław Majda</h3><span class="role">kierownik budów, nadzory</span></article>
-        <article class="arch mem"><div class="ph pic"><img loading="lazy" src="img/branza-delineszew.jpg?v=6" alt="Nikolaj Delineszew"></div><h3>Nikolaj Delineszew <span class="cross">†</span></h3><span class="role">nauczyciel, mentor, konstruktor artysta · in memoriam</span></article>
+        <article class="arch"><div class="ph pic"><img loading="lazy" src="img/branza-steczkiewicz.jpg" alt="Krzysztof Steczkiewicz"></div><h3>Krzysztof Steczkiewicz</h3><span class="role">oświetlenie architektury</span></article><article class="arch mem"><div class="ph pic"><img loading="lazy" src="img/branza-delineszew.jpg?v=6" alt="Nikolaj Delineszew"></div><h3>Nikolaj Delineszew <span class="cross">†</span></h3><span class="role">nauczyciel, mentor, konstruktor artysta · in memoriam</span></article>
       </div>
     </div>
   </section>
@@ -1136,7 +1136,7 @@ const PR_ALL=[
  {s:"dom-k2-wierzbice",x:1,t:"Dom K2",w:"Wierzbice",y:"2024",n:9,r:[1.777, 1.776, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"domy"},
  {s:"dom-chwalowice",t:"Dom w Chwałowicach",w:"",y:"2020",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
  {s:"dom-wroclaw-biskupin",t:"Dom na Biskupinie",w:"Wrocław, Biskupin",y:"2011",n:7,r:[1.333, 1.333, 1.333, 1.333, 1.148, 1.14, 1.129],c:"3/2",k:"domy",v:4,pl:[5, 6, 7],ph:"Rzuty kondygnacji",pr:[["","Parter","186,9 m²"],["","Piętro","162,3 m²"],["","Piętro 2","87,0 m²"]],pu:"436,2 m²"},
- {s:"dom-wilczyce-r",t:"Dom w Wilczycach",w:"",n:8,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.779, 1.777, 1.784],c:"4/5",k:"domy"},
+ {s:"dom-wilczyce-r",v:2,t:"Dom w Wilczycach",w:"",n:9,r:[1.777,1.777,1.777,1.777,1.784,1.777,1.777,1.779,1.777],c:"4/5",k:"domy"},
  {s:"dom-w-trzcinsku",t:"Dom w Trzcińsku",w:"Rudawy Janowickie",y:"2024",n:12,r:[1.777, 1.777, 1.776, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.777, 1.078],c:"5/4",k:"domy",v:4,pl:[12],ph:"Rzut parteru",pu:"121,8 m²"},
  {s:"dom-h010-mrozow",t:"Dom w Mrozowie",w:"gmina Miękinia",y:"ok. 2019",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"4/5",k:"domy"},
  {s:"dom-k7",t:"Dom K7",w:"",y:"2010",n:8,r:[0.653, 1.5, 1.5, 0.667, 1.5, 1.375, 1.393, 0.667],c:"1/1",k:"domy"},
@@ -1157,18 +1157,18 @@ const PR_ALL=[
  {s:"mieszk-ostroda-domy",t:"Domy w Ostródzie",w:"Ostróda",y:"2014",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-ostroda-b",x:1,t:"Budynek w Ostródzie",w:"Ostróda",n:4,r:[1.414, 1.333, 1.414, 1.414],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-ostroda-2019",x:1,t:"Zespół domów w Ostródzie",w:"Ostróda",y:"2019",n:6,r:[1.416, 1.565, 1.333, 1.314, 1.334, 1.334],c:"1/1",k:"mieszkaniowe"},
- {s:"mieszk-apartamenty-szczytna",x:1,t:"Apartamenty w Szczytnej",w:"Szczytna",y:"2012",n:6,r:[1.667, 1.25, 1.667, 1.667, 1.25, 1.25],c:"1/1",k:"mieszkaniowe"},
+ {s:"mieszk-apartamenty-szczytna",v:2,t:"Apartamenty w Szczytnej",w:"Szczytna",y:"2012",n:9,r:[1.668,1.25,1.668,1.668,1.252,1.25,1.43,1.374,1.668],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-bielawa",x:1,t:"Budynek wielorodzinny w Bielawie",w:"Bielawa",n:6,r:[1.481, 1.481, 1.481, 1.481, 1.5, 1.333],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-oltaszyn",x:1,t:"Budynek wielorodzinny na Ołtaszynie",w:"Wrocław",y:"2024",n:5,r:[1.333, 1.333, 1.333, 1.333, 1.333],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-ostroda-solskiego",x:1,t:"Szeregowce w Ostródzie",w:"ul. Solskiego",y:"2015",n:5,r:[1.509, 1.509, 1.509, 1.509, 1.509],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-radwanice",x:1,t:"Zabudowa w Radwanicach",w:"Radwanice",n:4,r:[1.481, 1.481, 1.481, 1.556],c:"1/1",k:"mieszkaniowe"},
  {s:"mieszk-wojnow",x:1,t:"Zabudowa w Wojnowie",w:"Wojnów",y:"2018",n:4,r:[1.333, 1.333, 1.674, 1.719],c:"1/1",k:"mieszkaniowe"},
  {s:"hotel-brzeg",t:"Hotel w Brzegu",w:"Brzeg",y:"2015",n:9,r:[1.499,1.309,0.619,1.499,1.499,1.5,1.475,1.499,1.333],c:"1/1",k:"hotele",g:{0:"Realizacja · zdjęcia 2015",8:"Projekt · wizualizacja recepcji"}},
- {s:"hotel-scandic",v:2,t:"Hotel Scandic",w:"",y:"2014",n:12,r:[1.488,1.491,1.512,1.512,1.524,1.403,1.373,1.454,1.5,1.483,1.504,1.513],c:"1/1",k:"hotele"},
+ {s:"hotel-scandic",v:3,t:"Hotel Scandic",w:"",y:"2014",n:18,r:[1.488,1.491,1.512,1.512,1.524,1.403,1.373,1.454,1.5,1.483,1.504,1.513,1.501,1.501,1.501,1.501,1.501,1.501],c:"1/1",k:"hotele"},
  {s:"hotel-haston",x:1,t:"Hotel Haston",w:"",y:"2015",n:5,r:[1.5, 1.5, 1.5, 1.5, 1.5],c:"1/1",k:"hotele"},
  {s:"hotel-holiday-inn-express",v:2,t:"Hotel Holiday Inn Express",w:"Wrocław",y:"2020",n:4,r:[1.777,1.777,1.777,1.777],c:"1/1",k:"hotele"},
  {s:"hotel-zoo",x:1,t:"Hotel ZOO",w:"",y:"2018",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
- {s:"hotel-radisson-warszawa",x:1,t:"Hotel Radisson",w:"Warszawa",y:"2015",n:6,r:[1.774, 1.774, 1.774, 1.0, 1.774, 1.774],c:"1/1",k:"hotele"},
+ {s:"hotel-radisson-warszawa",v:2,t:"Hotel Radisson",w:"Warszawa",y:"2015",n:11,r:[1.773,1.777,1.776,1.775,1.776,1.773,1.773,1.773,2.049,2.044,2.058],c:"1/1",k:"hotele"},
  {s:"pensjonat-mrzezyno",x:1,t:"Pensjonat w Mrzeżynie",w:"Mrzeżyno",y:"2021",n:6,r:[1.777, 1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"hotele"},
  {s:"hotel-aleksandra",x:1,t:"Hotel Aleksandra",w:"",y:"2015",n:4,r:[0.808, 0.625, 1.014, 1.782],c:"1/1",k:"hotele"},
  {s:"kosciol-szmaragdowe-wzgorze",x:1,t:"Wnętrze kościoła",w:"Szmaragdowe Wzgórze",y:"2023",n:5,r:[1.777, 1.777, 1.777, 1.777, 1.777],c:"1/1",k:"komercyjne"},
@@ -1920,39 +1920,40 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===
   document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
 })();
 
-/* KURSOR magnetyczny: kółko płynnie podąża za myszą, a w pobliżu klikalnego elementu przykleja się do jego środka
-   i obrysowuje go; nad dużymi kaflami tylko się powiększa. Działa tylko z myszą i gdy nie wyłączono animacji. */
+/* KURSOR magnetyczny: zielone kółko podąża za myszą na sprężynie; gdy mysz zbliży się do klikalnego miejsca
+   (link, przycisk, kafel ze zdjęciem, logo, punkt na mapie), kółko szybko „wskakuje” w jego środek,
+   lekko się odbija i drga – bez zmiany kształtu. Tylko mysz; przy wyłączonych animacjach zwykły kursor. */
 (function(){
   if(!matchMedia("(hover: hover) and (pointer: fine)").matches||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const root=document.documentElement,cur=document.createElement("div"),dot=document.createElement("div");
   cur.className="mcur off";dot.className="mdot off";document.body.append(cur,dot);root.classList.add("mc");
-  const SEL='a[href],button,[role="button"],.chip,.wm-pin,.place,label,summary,.ph-b,.vlab,.wk,.pc-b';
-  let mx=-100,my=-100,cx=-100,cy=-100,cw=36,ch=36,tx=0,ty=0,tw=36,th=36,big=false,moved=false;
-  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;mx=e.clientX;my=e.clientY;if(!moved){moved=true;cx=mx;cy=my;cur.classList.remove("off");dot.classList.remove("off")}},{passive:true});
+  const SEL='a[href],button,[role="button"],.chip,.wm-pin,.place,summary,.ph-b,.vlab,.pc-b';
+  const NEAR=46;
+  let mx=-200,my=-200,x=-200,y=-200,vx=0,vy=0,sc=1,vs=0,moved=false,snapEl=null,fr=0,tx=0,ty=0;
+  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;mx=e.clientX;my=e.clientY;
+    if(!moved){moved=true;x=mx;y=my;cur.classList.remove("off");dot.classList.remove("off")}},{passive:true});
   document.addEventListener("pointerleave",()=>{cur.classList.add("off");dot.classList.add("off");moved=false});
-  const R=40;
-  function target(){
+  function pick(){
     const el=document.elementFromPoint(mx,my);
-    if(el&&el.closest("input,textarea,select")){return {hide:true}}
-    let best=null,bd=R;
-    for(const n of document.querySelectorAll(SEL)){const r=n.getBoundingClientRect();if(!r.width||r.bottom<0||r.top>innerHeight)continue;
+    if(el&&el.closest("input,textarea,select"))return "text";
+    let inside=null,ia=1e12,near=null,nd=NEAR;
+    for(const n of document.querySelectorAll(SEL)){const r=n.getBoundingClientRect();if(!r.width||r.bottom<0||r.top>innerHeight||r.right<0||r.left>innerWidth)continue;
       const dx=Math.max(r.left-mx,0,mx-r.right),dy=Math.max(r.top-my,0,my-r.bottom),d=Math.hypot(dx,dy);
-      if(d<bd||(d===0&&best&&best.r.width*best.r.height>r.width*r.height)){bd=d;best={n,r}}}
-    return best||false;
+      if(d===0){const ar=r.width*r.height;if(ar<ia){ia=ar;inside=n}}else if(d<nd){nd=d;near=n}}
+    return inside||near||null;
   }
-  let fr=0;
-  (function loop(){requestAnimationFrame(loop);if(!moved)return;fr++;
-    let t=fr%2?null:target();
-    if(t!==null){
-      if(t&&t.hide){cur.classList.add("off");tx=mx;ty=my;tw=th=36;big=false}
+  (function loop(){requestAnimationFrame(loop);if(!moved)return;
+    if(++fr%2===0){const t=pick();
+      if(t==="text"){cur.classList.add("off");snapEl=null}
       else{cur.classList.remove("off");
-        if(t&&t.r.width<=340&&t.r.height<=140){const r=t.r;tx=r.left+r.width/2;ty=r.top+r.height/2;tw=Math.max(36,r.width+18);th=Math.max(36,r.height+14);
-          if(Math.abs(tw-th)<24)tw=th=Math.max(tw,th);big=false}
-        else{tx=mx;ty=my;tw=th=t?64:36;big=!!t}}
-    }
-    cx+=(tx-cx)*.22;cy+=(ty-cy)*.22;cw+=(tw-cw)*.2;ch+=(th-ch)*.2;
-    cur.style.width=cw+"px";cur.style.height=ch+"px";cur.style.marginLeft=-cw/2+"px";cur.style.marginTop=-ch/2+"px";
-    cur.style.transform=`translate(${cx}px,${cy}px)`;cur.classList.toggle("big",big);
+        if(t!==snapEl){snapEl=t;cur.classList.toggle("snap",!!t);if(t){vs+=.09;const kick=.35;vx*=1+kick;vy*=1+kick}}}}
+    if(snapEl&&snapEl.isConnected){const im=snapEl.querySelector("img"),r=(im&&im.offsetWidth?im:snapEl).getBoundingClientRect();tx=r.left+r.width/2;ty=r.top+r.height/2}else{snapEl=null;tx=mx;ty=my}
+    /* sprężyna: przy przyklejeniu szybsza i z odbiciem, przy swobodnym ruchu łagodniejsza */
+    const k=snapEl?.2:.16,dmp=snapEl?.66:.62;
+    vx=(vx+(tx-x)*k)*dmp;vy=(vy+(ty-y)*k)*dmp;x+=vx;y+=vy;
+    vs=(vs+(1-sc)*.18)*.72;sc+=vs;
+    const sp=Math.min(Math.hypot(vx,vy),60),ang=Math.atan2(vy,vx)*57.2958,st=1+sp*.006;
+    cur.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) rotate(${ang.toFixed(1)}deg) scale(${(sc*st).toFixed(3)},${(sc/st).toFixed(3)})`;
     dot.style.transform=`translate(${mx}px,${my}px)`;
   })();
 })();
