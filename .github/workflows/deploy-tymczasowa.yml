@@ -1,0 +1,22 @@
+# Strona tymczasowa metaforaarchitekci.pl -> serwer SeoHost (FTP)
+# Dane logowania FTP wpisuje Grzegorz w GitHub: Settings -> Secrets and variables -> Actions
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  (opcjonalnie FTP_DIR, np. ./public_html/)
+name: Strona tymczasowa -> SeoHost
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['_tymczasowa/**', '.github/workflows/deploy-tymczasowa.yml']
+jobs:
+  ftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wysylka FTP na SeoHost
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./_tymczasowa/
+          server-dir: ${{ secrets.FTP_DIR || './' }}

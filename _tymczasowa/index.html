@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metafora Architekci – pracownia architektoniczna, Wrocław</title>
+<meta name="description" content="Metafora Architekci – pracownia architektoniczna we Wrocławiu. Domy, wnętrza, hale i obiekty usługowe. Nowa strona startuje 6 grudnia 2026 r.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Metafora Architekci – nowa strona od 6 grudnia">
+<meta property="og:image" content="img/a/dom-anik-pod-sleza.jpg">
+<style>
+@font-face{font-family:"Jost";src:url(fonts/jost-latin-ext-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Jost";src:url(fonts/jost-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--paper:#fff;--ink:#1B1E1C;--gr:#3C413E;--graphite:#5A615C;--line:#CDD1CB;--green:#3F8A2B;--hov:#6FBF52;--soft:#F4F5F3;--f:"Jost","Century Gothic",sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.txt{padding:48px clamp(16px,6vw,96px) 40px;display:flex;flex-direction:column;gap:40px}
+.logo img{width:150px;height:auto;display:block}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite)}
+h1{font-weight:400;font-size:clamp(36px,4.6vw,64px);line-height:1.05;letter-spacing:-.01em;margin:14px 0 18px;color:var(--gr)}
+h1 b{font-weight:500;color:var(--green)}
+.lead{max-width:34em;color:var(--graphite)}
+.contact{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:16px}
+.contact a{text-decoration:none;border-bottom:1px solid var(--line)}
+.contact a:hover{border-color:var(--green);color:var(--green)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;max-width:620px}
+label{display:flex;flex-direction:column;gap:6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite)}
+label.full{grid-column:1/-1}
+input,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:2px;padding:11px 12px;text-transform:none;letter-spacing:0}
+input:focus,textarea:focus{outline:2px solid var(--green);outline-offset:0;border-color:var(--green)}
+textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.row{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+button{font:inherit;font-size:15px;letter-spacing:.08em;text-transform:uppercase;background:var(--gr);color:#fff;border:0;border-radius:2px;padding:13px 30px;cursor:pointer}
+button:hover{background:var(--green)}
+button[disabled]{opacity:.6;cursor:wait}
+.note{font-size:13px;color:var(--graphite);max-width:40em}
+.msg{font-size:15px}
+.msg.ok{color:var(--green)}.msg.err{color:#A33}
+footer{margin-top:auto;font-size:13px;color:var(--graphite);display:flex;flex-wrap:wrap;gap:6px 18px;border-top:1px solid var(--line);padding-top:16px}
+.img{position:sticky;top:0;height:100vh;background:#E9EBE8 center/cover no-repeat}
+.img span{position:absolute;left:24px;bottom:22px;color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.img{position:relative;height:46vh;order:-1}.txt{padding-top:28px;gap:30px}form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="txt">
+    <a class="logo" href="./" aria-label="Metafora Architekci"><img src="img/logo-grafit.png" width="600" height="447" alt="Metafora Architekci"></a>
+    <section>
+      <p class="eyebrow">Pracownia architektoniczna · Wrocław</p>
+      <h1>Nowa strona ruszy <b>6&nbsp;grudnia</b>.</h1>
+      <p class="lead">Na Mikołajki pokażemy nową odsłonę metaforaarchitekci.pl. Pracownia działa normalnie – projektujemy domy, wnętrza, hale i obiekty usługowe. Napisz do nas, odpowiemy.</p>
+    </section>
+    <div class="contact">
+      <a href="tel:+48606355220">+48 606 355 220</a>
+      <a href="mailto:gklopocki@metaforaarchitekci.pl">gklopocki@metaforaarchitekci.pl</a>
+      <span>ul. Legnicka 55/10, 54-203 Wrocław</span>
+    </div>
+    <form id="f" novalidate>
+      <label>Imię i nazwisko *<input name="name" required autocomplete="name"></label>
+      <label>E-mail *<input name="email" type="email" required autocomplete="email"></label>
+      <label class="full">Telefon<input name="tel" type="tel" autocomplete="tel"></label>
+      <label class="full">Wiadomość *<textarea name="msg" required></textarea></label>
+      <input class="hp" name="www" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="place" value="strona tymczasowa">
+      <div class="row"><button type="submit">Wyślij</button><span class="msg" id="m" role="status"></span></div>
+      <p class="note full" style="grid-column:1/-1">Wysyłając formularz, przekazujesz nam swoje dane w celu odpowiedzi na wiadomość. Szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+    </form>
+    <footer><span>METAFORA ARCHITEKCI sp. z o.o.</span><span>KRS 0001273221 · NIP 894 329 66 91</span><a href="polityka-prywatnosci.html">Polityka prywatności</a></footer>
+  </main>
+  <div class="img" id="hero" role="img" aria-label="Projekt pracowni Metafora Architekci"><span id="cap">Metafora Architekci</span></div>
+</div>
+<script>
+/* Zdjęcie dnia – okładki A_ z galerii; zmienia się raz na dobę */
+(function(){var L=[["img/a/dom-anik-pod-sleza.jpg", "Dom pod Ślężą"], ["img/a/dom-bialy-kosciol.jpg", "Dom w Białym Kościele"], ["img/a/hotel-brzeg.jpg", "Hotel w Brzegu"], ["img/a/dom-chwalowice.jpg", "Dom w Chwałowicach"], ["img/a/wnetrze-wroclaw-borek.jpg", "Wnętrze na Borku, Wrocław"], ["img/a/dom-clt-probono-czerna.jpg", "Dom z CLT w Czernej"], ["img/a/hotel-holiday-inn-express.jpg", "Holiday Inn Express, Wrocław"], ["img/a/dom-h010-mrozow.jpg", "Dom w Mrozowie"], ["img/a/mieszk-apartamenty-szczytna.jpg", "Apartamenty w Szczytnej"], ["img/a/dom-k7.jpg", "Dom K7"], ["img/a/hotel-radisson-warszawa.jpg", "Hotel Radisson, Warszawa"], ["img/a/dom-k8.jpg", "Dom K8"], ["img/a/wnetrze-poznan-jezyce.jpg", "Apartament w Poznaniu"], ["img/a/dom-kudowa-zdroj.jpg", "Dom w Kudowie-Zdroju"], ["img/a/mieszk-ostroda-domy.jpg", "Domy w Ostródzie"], ["img/a/dom-ostrow-p.jpg", "Dom w Ostrowie"], ["img/a/hotel-scandic.jpg", "Hotel Scandic"], ["img/a/dom-w-trzcinsku.jpg", "Dom w Trzcińsku"], ["img/a/wnetrze-wroclaw-nadodrze.jpg", "Mieszkanie na Nadodrzu, Wrocław"], ["img/a/dom-wilczyce-r.jpg", "Dom w Wilczycach"], ["img/a/mieszk-ostroda-szeregowce.jpg", "Domy szeregowe w Ostródzie"], ["img/a/dom-woodgood-d1.jpg", "WoodGood MD1 – dom modułowy"], ["img/a/mieszk-ostroda-zespol.jpg", "Zespół domów w Ostródzie"], ["img/a/dom-wroclaw-biskupin.jpg", "Dom na Biskupinie, Wrocław"], ["img/a/design-lampa-unic.jpg", "Lampa UNIC"]];
+var d=new Date(),day=Math.floor((d.getTime()-d.getTimezoneOffset()*6e4)/864e5),p=L[day%L.length];
+var h=document.getElementById('hero');h.style.backgroundImage='url('+p[0]+')';h.setAttribute('aria-label',p[1]+' – projekt Metafora Architekci');document.getElementById('cap').textContent=p[1];})();
+</script>
+<script>
+document.getElementById('f').addEventListener('submit',async function(e){
+  e.preventDefault();var f=this,m=document.getElementById('m'),b=f.querySelector('button');
+  if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||f.msg.value.trim().length<3){m.className='msg err';m.textContent='Uzupełnij imię, poprawny e-mail i wiadomość.';return}
+  b.disabled=true;m.className='msg';m.textContent='Wysyłanie…';
+  try{var r=await fetch('kontakt.php',{method:'POST',body:new FormData(f)});var j=await r.json();
+    if(j.ok){f.reset();m.className='msg ok';m.textContent='Dziękujemy – wiadomość wysłana. Odezwiemy się wkrótce.'}
+    else{throw 0}}
+  catch(_){m.className='msg err';m.textContent='Nie udało się wysłać. Zadzwoń: 606 355 220 lub napisz na gklopocki@metaforaarchitekci.pl.'}
+  b.disabled=false;
+});
+</script>
+</body>
+</html>
